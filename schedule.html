@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - Gig Harbor Tides Baseball</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+            <img src="Logos/Tides Logo.png" alt="Tides">
+            <span>Tides Baseball</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="schedule.html" class="active">Schedule</a></li>
+            <li><a href="roster.html">Roster</a></li>
+            <li><a href="practice.html">Practice</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="boosters.html">Boosters</a></li>
+            <li><a href="conduct.html">Conduct</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="accent-bar"></div>
+
+<div class="page-container-narrow">
+    <div class="page-header">
+        <h1>2026 Season Schedule</h1>
+        <p>All times are Pacific. Schedule subject to change.</p>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+        <div class="legend-item"><span class="badge badge-home">Home</span> Home Game</div>
+        <div class="legend-item"><span class="badge badge-away">Away</span> Away Game</div>
+        <div class="legend-item"><span class="badge badge-neutral">Neutral</span> Neutral Site</div>
+        <div class="legend-item"><span class="badge badge-event">Event</span> Special Event</div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('varsity')">Varsity</button>
+        <button class="tab-btn" onclick="switchTab('jv')">JV</button>
+        <button class="tab-btn" onclick="switchTab('cteam')">C Team</button>
+    </div>
+
+    <!-- ==================== VARSITY ==================== -->
+    <div id="tab-varsity" class="tab-content active">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Opponent</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="event-row">
+                    <td class="date-cell">
+                        <div class="date-day">Mar 2 &ndash; 4</div>
+                        <div class="date-weekday">Mon &ndash; Wed</div>
+                    </td>
+                    <td><span class="badge badge-event">Event</span>&ensp;Tryouts</td>
+                    <td class="time-cell">&mdash;</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr class="event-row">
+                    <td class="date-cell">
+                        <div class="date-day">Mar 7</div>
+                        <div class="date-weekday">Saturday</div>
+                    </td>
+                    <td><span class="badge badge-event">Event</span>&ensp;Round Robin (Peninsula, Silas)</td>
+                    <td class="time-cell">11:00 AM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 11</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/9/8/c/98c261f7-81dc-4729-8d39-cef61756f4b4.gif?width=128&height=128" alt="Rogers" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Rogers</span>
+                                <span class="opponent-mascot">Rams</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">7:00 PM</td>
+                    <td class="location-cell">Heritage Field</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 12</div>
+                        <div class="date-weekday">Thursday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/1/9/3/19339740-6e93-4929-b54d-f7123a6dd09e.gif?width=128&height=128" alt="Puyallup" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Puyallup</span>
+                                <span class="opponent-mascot">Vikings</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">7:00 PM</td>
+                    <td class="location-cell">Heritage Field</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 14</div>
+                        <div class="date-weekday">Saturday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/a/9/2a9b8306-fcf6-4b44-98f4-b3f5c310afa9.gif?width=128&height=128" alt="Kelso" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Kelso</span>
+                                <span class="opponent-mascot">Hilanders</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">12:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 17</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/a/3/e/a3e1c994-661a-4ddf-a9e0-dec148c93225.gif?width=128&height=128" alt="River Ridge" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">River Ridge</span>
+                                <span class="opponent-mascot">Hawks</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td class="location-cell">River Ridge HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 18</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/d/5/4/d5441c4e-0b13-4798-b4f8-73b05147d69d.gif?width=128&height=128" alt="North Thurston" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">North Thurston</span>
+                                <span class="opponent-mascot">Rams</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">North Thurston HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 20</div>
+                        <div class="date-weekday">Friday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/1/4/f/14f6889c-9b91-40ca-87a8-79413b19195c.gif?width=128&height=128" alt="Lakes" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Lakes</span>
+                                <span class="opponent-mascot">Lancers</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 24</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/6/5/b/65bfee7c-85e0-434d-977c-45c149c38da8.gif?width=128&height=128" alt="Bellarmine Prep" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Bellarmine Prep</span>
+                                <span class="opponent-mascot">Lions</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td class="location-cell">Bellarmine HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 25</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/6/5/b/65bfee7c-85e0-434d-977c-45c149c38da8.gif?width=128&height=128" alt="Bellarmine Prep" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Bellarmine Prep</span>
+                                <span class="opponent-mascot">Lions</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 28</div>
+                        <div class="date-weekday">Saturday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/9/1/0/9102a0af-8505-4258-930d-670fab8001d5.gif?width=128&height=128" alt="West Seattle" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">West Seattle</span>
+                                <span class="opponent-mascot">Wildcats</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">11:00 AM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 31</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/a/f/3/af3e5aa1-f02c-4595-bad3-360be70baf61.gif?width=128&height=128" alt="Silas" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Silas</span>
+                                <span class="opponent-mascot">Rams</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 1</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/a/f/3/af3e5aa1-f02c-4595-bad3-360be70baf61.gif?width=128&height=128" alt="Silas" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Silas</span>
+                                <span class="opponent-mascot">Rams</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td class="location-cell">Silas HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 6</div>
+                        <div class="date-weekday">Monday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/f/e/c/feccdca5-cbf3-46c9-b0e5-3f7831579316.gif?width=128&height=128" alt="Lincoln" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Lincoln</span>
+                                <span class="opponent-mascot">Abes</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Lincoln HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 7</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/f/e/c/feccdca5-cbf3-46c9-b0e5-3f7831579316.gif?width=128&height=128" alt="Lincoln" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Lincoln</span>
+                                <span class="opponent-mascot">Abes</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 11</div>
+                        <div class="date-weekday">Saturday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/3/b/9/3b9245d9-dccf-4c3d-bdee-1a4408efc422.gif?width=128&height=128" alt="Curtis" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Curtis</span>
+                                <span class="opponent-mascot">Vikings</span>
+                            </div>
+                            <span class="badge badge-neutral">Neutral</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">3:00 PM</td>
+                    <td class="location-cell">Cheney Stadium</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 13</div>
+                        <div class="date-weekday">Monday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/5/5/255aa3ed-ae27-4054-97be-c4e60e4092f2.gif?width=128&height=128" alt="Mount Tahoma" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Mount Tahoma</span>
+                                <span class="opponent-mascot">T-Birds</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td class="location-cell">Mount Tahoma HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 14</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/5/5/255aa3ed-ae27-4054-97be-c4e60e4092f2.gif?width=128&height=128" alt="Mount Tahoma" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Mount Tahoma</span>
+                                <span class="opponent-mascot">T-Birds</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 21</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/3/3/4/334ff0f6-d1d3-4be1-9648-3dd3dfa93d99.gif?width=128&height=128" alt="Central Kitsap" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Central Kitsap</span>
+                                <span class="opponent-mascot">Cougars</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 22</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/3/3/4/334ff0f6-d1d3-4be1-9648-3dd3dfa93d99.gif?width=128&height=128" alt="Central Kitsap" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Central Kitsap</span>
+                                <span class="opponent-mascot">Cougars</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Central Kitsap HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 28</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/4/8/2484e085-1438-4702-8bd7-13eb01e237ce.gif?width=128&height=128" alt="Peninsula" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Peninsula</span>
+                                <span class="opponent-mascot">Seahawks</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 29</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/3/c/23c6a016-32a5-4dd3-8cda-e75e9b8291d0.gif?width=128&height=128" alt="Capital" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Capital</span>
+                                <span class="opponent-mascot">Cougars</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">May 5</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/9/6/c/96c7ca4e-de51-44f1-8dd2-45b2ba713c15.gif?width=128&height=128" alt="Timberline" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Timberline</span>
+                                <span class="opponent-mascot">Blazers</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td class="location-cell">Timberline HS</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==================== JV ==================== -->
+    <div id="tab-jv" class="tab-content">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Opponent</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="event-row">
+                    <td class="date-cell">
+                        <div class="date-day">Mar 2 &ndash; 4</div>
+                        <div class="date-weekday">Mon &ndash; Wed</div>
+                    </td>
+                    <td><span class="badge badge-event">Event</span>&ensp;Tryouts</td>
+                    <td class="time-cell">&mdash;</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 11</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/9/8/c/98c261f7-81dc-4729-8d39-cef61756f4b4.gif?width=128&height=128" alt="Rogers" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Rogers</span>
+                                <span class="opponent-mascot">Rams</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 12</div>
+                        <div class="date-weekday">Thursday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/1/9/3/19339740-6e93-4929-b54d-f7123a6dd09e.gif?width=128&height=128" alt="Puyallup" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Puyallup</span>
+                                <span class="opponent-mascot">Vikings</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 14</div>
+                        <div class="date-weekday">Saturday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/a/9/2a9b8306-fcf6-4b44-98f4-b3f5c310afa9.gif?width=128&height=128" alt="Kelso" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Kelso</span>
+                                <span class="opponent-mascot">Hilanders</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">12:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 17</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/a/3/e/a3e1c994-661a-4ddf-a9e0-dec148c93225.gif?width=128&height=128" alt="River Ridge" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">River Ridge</span>
+                                <span class="opponent-mascot">Hawks</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td class="location-cell">River Ridge HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 18</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/d/5/4/d5441c4e-0b13-4798-b4f8-73b05147d69d.gif?width=128&height=128" alt="North Thurston" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">North Thurston</span>
+                                <span class="opponent-mascot">Rams</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">North Thurston HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 20</div>
+                        <div class="date-weekday">Friday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/1/4/f/14f6889c-9b91-40ca-87a8-79413b19195c.gif?width=128&height=128" alt="Lakes" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Lakes</span>
+                                <span class="opponent-mascot">Lancers</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 24</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/6/5/b/65bfee7c-85e0-434d-977c-45c149c38da8.gif?width=128&height=128" alt="Bellarmine Prep" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Bellarmine Prep</span>
+                                <span class="opponent-mascot">Lions</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td class="location-cell">Bellarmine HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 25</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/6/5/b/65bfee7c-85e0-434d-977c-45c149c38da8.gif?width=128&height=128" alt="Bellarmine Prep" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Bellarmine Prep</span>
+                                <span class="opponent-mascot">Lions</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 31</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/a/f/3/af3e5aa1-f02c-4595-bad3-360be70baf61.gif?width=128&height=128" alt="Silas" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Silas</span>
+                                <span class="opponent-mascot">Rams</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Silas HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 1</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/a/f/3/af3e5aa1-f02c-4595-bad3-360be70baf61.gif?width=128&height=128" alt="Silas" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Silas</span>
+                                <span class="opponent-mascot">Rams</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 6</div>
+                        <div class="date-weekday">Monday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/f/e/c/feccdca5-cbf3-46c9-b0e5-3f7831579316.gif?width=128&height=128" alt="Lincoln" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Lincoln</span>
+                                <span class="opponent-mascot">Abes</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 7</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/f/e/c/feccdca5-cbf3-46c9-b0e5-3f7831579316.gif?width=128&height=128" alt="Lincoln" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Lincoln</span>
+                                <span class="opponent-mascot">Abes</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Lincoln HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 11</div>
+                        <div class="date-weekday">Saturday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/3/b/9/3b9245d9-dccf-4c3d-bdee-1a4408efc422.gif?width=128&height=128" alt="Curtis" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Curtis</span>
+                                <span class="opponent-mascot">Vikings</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">12:00 PM</td>
+                    <td class="location-cell">Curtis HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 13</div>
+                        <div class="date-weekday">Monday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/5/5/255aa3ed-ae27-4054-97be-c4e60e4092f2.gif?width=128&height=128" alt="Mount Tahoma" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Mount Tahoma</span>
+                                <span class="opponent-mascot">T-Birds</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 14</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/5/5/255aa3ed-ae27-4054-97be-c4e60e4092f2.gif?width=128&height=128" alt="Mount Tahoma" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Mount Tahoma</span>
+                                <span class="opponent-mascot">T-Birds</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Mount Tahoma HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 21</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/3/3/4/334ff0f6-d1d3-4be1-9648-3dd3dfa93d99.gif?width=128&height=128" alt="Central Kitsap" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Central Kitsap</span>
+                                <span class="opponent-mascot">Cougars</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 22</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/3/3/4/334ff0f6-d1d3-4be1-9648-3dd3dfa93d99.gif?width=128&height=128" alt="Central Kitsap" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Central Kitsap</span>
+                                <span class="opponent-mascot">Cougars</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">6:00 PM</td>
+                    <td class="location-cell">Central Kitsap HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 25</div>
+                        <div class="date-weekday">Saturday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/9/1/0/9102a0af-8505-4258-930d-670fab8001d5.gif?width=128&height=128" alt="West Seattle" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">West Seattle</span>
+                                <span class="opponent-mascot">Wildcats</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">11:00 AM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 28</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/4/8/2484e085-1438-4702-8bd7-13eb01e237ce.gif?width=128&height=128" alt="Peninsula" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Peninsula</span>
+                                <span class="opponent-mascot">Seahawks</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 29</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/3/c/23c6a016-32a5-4dd3-8cda-e75e9b8291d0.gif?width=128&height=128" alt="Capital" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Capital</span>
+                                <span class="opponent-mascot">Cougars</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">May 5</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/9/6/c/96c7ca4e-de51-44f1-8dd2-45b2ba713c15.gif?width=128&height=128" alt="Timberline" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Timberline</span>
+                                <span class="opponent-mascot">Blazers</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td class="location-cell">Timberline HS</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==================== C TEAM ==================== -->
+    <div id="tab-cteam" class="tab-content">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Opponent</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="event-row">
+                    <td class="date-cell">
+                        <div class="date-day">Mar 2 &ndash; 4</div>
+                        <div class="date-weekday">Mon &ndash; Wed</div>
+                    </td>
+                    <td><span class="badge badge-event">Event</span>&ensp;Tryouts</td>
+                    <td class="time-cell">&mdash;</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 13</div>
+                        <div class="date-weekday">Friday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/1/9/3/19339740-6e93-4929-b54d-f7123a6dd09e.gif?width=128&height=128" alt="Puyallup" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Puyallup</span>
+                                <span class="opponent-mascot">Vikings</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">3:00 PM</td>
+                    <td class="location-cell">PRC</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 17</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/4/8/2484e085-1438-4702-8bd7-13eb01e237ce.gif?width=128&height=128" alt="Peninsula" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Peninsula</span>
+                                <span class="opponent-mascot">Seahawks</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 21</div>
+                        <div class="date-weekday">Saturday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/1/6/e/16edf4c8-b724-4448-8f72-0554e3503553.gif?width=128&height=128" alt="South Kitsap" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">South Kitsap (DH)</span>
+                                <span class="opponent-mascot">Wolves</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">11:00 AM &amp; 2:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 24</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/1/9/3/19339740-6e93-4929-b54d-f7123a6dd09e.gif?width=128&height=128" alt="Puyallup" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Puyallup</span>
+                                <span class="opponent-mascot">Vikings</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">3:00 PM</td>
+                    <td class="location-cell">PRC</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Mar 31</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/4/8/2484e085-1438-4702-8bd7-13eb01e237ce.gif?width=128&height=128" alt="Peninsula" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Peninsula</span>
+                                <span class="opponent-mascot">Seahawks</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">GHHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 7</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/4/8/2484e085-1438-4702-8bd7-13eb01e237ce.gif?width=128&height=128" alt="Peninsula" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Peninsula</span>
+                                <span class="opponent-mascot">Seahawks</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Peninsula HS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 10</div>
+                        <div class="date-weekday">Friday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/1/9/3/19339740-6e93-4929-b54d-f7123a6dd09e.gif?width=128&height=128" alt="Puyallup" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Puyallup</span>
+                                <span class="opponent-mascot">Vikings</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">3:00 PM</td>
+                    <td class="location-cell">PRC</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 15</div>
+                        <div class="date-weekday">Wednesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/1/9/3/19339740-6e93-4929-b54d-f7123a6dd09e.gif?width=128&height=128" alt="Puyallup" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Puyallup</span>
+                                <span class="opponent-mascot">Vikings</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">3:00 PM</td>
+                    <td class="location-cell">PRC</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 25</div>
+                        <div class="date-weekday">Saturday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/9/1/0/9102a0af-8505-4258-930d-670fab8001d5.gif?width=128&height=128" alt="West Seattle" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">West Seattle</span>
+                                <span class="opponent-mascot">Wildcats</span>
+                            </div>
+                            <span class="badge badge-home">Home</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">2:00 PM</td>
+                    <td class="location-cell">Sehmel Park</td>
+                </tr>
+                <tr>
+                    <td class="date-cell">
+                        <div class="date-day">Apr 28</div>
+                        <div class="date-weekday">Tuesday</div>
+                    </td>
+                    <td>
+                        <div class="opponent-cell">
+                            <img class="opponent-logo" src="https://image.maxpreps.io/school-mascot/2/4/8/2484e085-1438-4702-8bd7-13eb01e237ce.gif?width=128&height=128" alt="Peninsula" onerror="this.style.display='none'">
+                            <div class="opponent-info">
+                                <span class="opponent-name">Peninsula</span>
+                                <span class="opponent-mascot">Seahawks</span>
+                            </div>
+                            <span class="badge badge-away">Away</span>
+                        </div>
+                    </td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td class="location-cell">Peninsula HS</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <h3>Gig Harbor High School</h3>
+            <p>5101 Rosedale St NW<br>Gig Harbor, WA 98335</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="roster.html">Roster</a></li>
+                <li><a href="practice.html">Practice Info</a></li>
+                <li><a href="boosters.html">Booster Club</a></li>
+                <li><a href="conduct.html">Code of Conduct</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <p>Social media links coming soon.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Gig Harbor Tides Baseball &bull; 2026 Season &bull; All times Pacific</p>
+    </div>
+</footer>
+
+<script>
+function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(function(el) {
+        el.classList.remove('active');
+    });
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+    });
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+</script>
+
+</body>
+</html>

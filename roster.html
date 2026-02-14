@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roster - Gig Harbor Tides Baseball</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+            <img src="Logos/Tides Logo.png" alt="Tides">
+            <span>Tides Baseball</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+            <li><a href="roster.html" class="active">Roster</a></li>
+            <li><a href="practice.html">Practice</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="boosters.html">Boosters</a></li>
+            <li><a href="conduct.html">Conduct</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="accent-bar"></div>
+
+<div class="page-container-narrow">
+    <div class="page-header">
+        <h1>2026 Roster</h1>
+        <p>Varsity, JV, and C Team rosters</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('varsity')">Varsity</button>
+        <button class="tab-btn" onclick="switchTab('jv')">JV</button>
+        <button class="tab-btn" onclick="switchTab('cteam')">C Team</button>
+    </div>
+
+    <div id="tab-varsity" class="tab-content active">
+        <div class="placeholder-section">
+            <div class="placeholder-icon">&#9918;</div>
+            <h2>Coming Soon</h2>
+            <p>Tryouts run March 2&ndash;4. Rosters will be posted after final cuts.</p>
+        </div>
+        <!--
+        Future roster table structure:
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Pos</th>
+                    <th>Year</th>
+                    <th>Bats/Throws</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Player Name</td>
+                    <td>SS</td>
+                    <td>Sr</td>
+                    <td>R/R</td>
+                </tr>
+            </tbody>
+        </table>
+        -->
+    </div>
+
+    <div id="tab-jv" class="tab-content">
+        <div class="placeholder-section">
+            <div class="placeholder-icon">&#9918;</div>
+            <h2>Coming Soon</h2>
+            <p>Tryouts run March 2&ndash;4. Rosters will be posted after final cuts.</p>
+        </div>
+    </div>
+
+    <div id="tab-cteam" class="tab-content">
+        <div class="placeholder-section">
+            <div class="placeholder-icon">&#9918;</div>
+            <h2>Coming Soon</h2>
+            <p>Tryouts run March 2&ndash;4. Rosters will be posted after final cuts.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <h3>Gig Harbor High School</h3>
+            <p>5101 Rosedale St NW<br>Gig Harbor, WA 98335</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="roster.html">Roster</a></li>
+                <li><a href="practice.html">Practice Info</a></li>
+                <li><a href="boosters.html">Booster Club</a></li>
+                <li><a href="conduct.html">Code of Conduct</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <p>Social media links coming soon.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Gig Harbor Tides Baseball &bull; 2026 Season &bull; All times Pacific</p>
+    </div>
+</footer>
+
+<script>
+function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(function(el) {
+        el.classList.remove('active');
+    });
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+    });
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+</script>
+
+</body>
+</html>
