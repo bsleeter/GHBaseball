@@ -402,6 +402,173 @@ a:hover {
     color: var(--text-light);
 }
 
+/* ========== 2025 SEASON RECAP ========== */
+.recap-section {
+    background: var(--white);
+    padding: 48px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.recap-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.recap-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--navy);
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.recap-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.recap-record {
+    text-align: center;
+    padding: 20px 12px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-radius: var(--radius);
+    color: var(--white);
+}
+
+.record-number {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    color: var(--carolina-light);
+}
+
+.record-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.recap-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.recap-story h3,
+.recap-stats h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--carolina);
+    display: inline-block;
+}
+
+.recap-story p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 12px;
+    font-size: 0.92rem;
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.stats-table thead th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stats-table thead th:first-child {
+    border-radius: 6px 0 0 0;
+}
+
+.stats-table thead th:last-child {
+    border-radius: 0 6px 0 0;
+}
+
+.stats-table tbody td {
+    padding: 7px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+
+.stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.stats-table tbody tr:hover {
+    background: var(--light-bg);
+}
+
+.recap-news {
+    background: var(--light-bg);
+    border-radius: var(--radius);
+    padding: 24px;
+}
+
+.recap-news h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+}
+
+.news-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.news-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.news-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.news-source {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--carolina);
+    font-weight: 600;
+}
+
+.news-title {
+    font-size: 0.88rem;
+    color: var(--navy);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
 /* ========== QUICK LINKS (Home) ========== */
 .quick-links {
     display: grid;
@@ -994,6 +1161,18 @@ a:hover {
     }
 
     .consequence-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .recap-banner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .recap-content {
+        grid-template-columns: 1fr;
+    }
+
+    .news-links {
         grid-template-columns: 1fr;
     }
 }
