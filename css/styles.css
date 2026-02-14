@@ -569,6 +569,42 @@ a:hover {
     line-height: 1.4;
 }
 
+/* ========== RECAP VIDEO ========== */
+.recap-video {
+    margin-top: 32px;
+}
+
+.recap-video h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--carolina);
+    display: inline-block;
+}
+
+.video-wrapper {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background: #000;
+}
+
+.video-wrapper video {
+    width: 100%;
+    display: block;
+}
+
+.video-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-top: 12px;
+}
+
 /* ========== QUICK LINKS (Home) ========== */
 .quick-links {
     display: grid;
