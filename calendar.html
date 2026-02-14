@@ -10,8 +10,8 @@
         .calendar-table td { font-size: 0.88rem; }
         .calendar-table .event-game { background: #E8F5E9; }
         .calendar-table .event-game td { font-weight: 600; color: var(--navy); font-style: normal; }
+        .badge-tryout { background: #F3E5F5; color: #7B1FA2; }
         .badge-practice { background: #E3F2FD; color: #1565C0; }
-        .badge-game { background: #E8F5E9; color: #2E7D32; }
         .badge-roundrobin { background: #FFF3E0; color: #E65100; }
         .calendar-summary { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
         .summary-stat { background: var(--white); border-radius: var(--radius-sm); padding: 12px 20px; box-shadow: var(--shadow); text-align: center; }
@@ -61,16 +61,49 @@
     <!-- ==================== VARSITY ==================== -->
     <div id="tab-varsity" class="tab-content active">
         <div class="calendar-summary">
-            <div class="summary-stat"><div class="num">54</div><div class="lbl">Total Events</div></div>
-            <div class="summary-stat"><div class="num">10</div><div class="lbl">Home Games</div></div>
-            <div class="summary-stat"><div class="num">43</div><div class="lbl">Practices</div></div>
-            <div class="summary-stat"><div class="num">1</div><div class="lbl">Special Event</div></div>
+            <div class="summary-stat"><div class="num">59</div><div class="lbl">Total Events</div></div>
+            <div class="summary-stat"><div class="num">11</div><div class="lbl">Home Games</div></div>
+            <div class="summary-stat"><div class="num">10</div><div class="lbl">Away Games</div></div>
+            <div class="summary-stat"><div class="num">33</div><div class="lbl">Practices</div></div>
         </div>
+
+        <!-- Legend -->
+        <div class="legend" style="margin-bottom: 16px;">
+            <div class="legend-item"><span class="badge badge-home">Home</span> Home Game</div>
+            <div class="legend-item"><span class="badge badge-away">Away</span> Away Game</div>
+            <div class="legend-item"><span class="badge badge-practice">Practice</span> Practice</div>
+            <div class="legend-item"><span class="badge badge-tryout">Tryouts</span> Tryouts</div>
+        </div>
+
         <table class="schedule-table calendar-table">
             <thead>
                 <tr><th>Date</th><th>Time</th><th>Location</th><th>Event</th></tr>
             </thead>
             <tbody>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 2</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Tue, Mar 3</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Mar 4</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Mar 5</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Fri, Mar 6</div></td>
                     <td class="time-cell">5:00 - 9:00 PM</td>
@@ -80,13 +113,13 @@
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Sat, Mar 7</div></td>
                     <td class="time-cell">8:00 AM - 3:00 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-roundrobin">Round Robin</span></td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-roundrobin">Jamboree</span></td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Mon, Mar 9</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
@@ -95,23 +128,29 @@
                     <td>Upper Turf</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
-                <tr>
+                <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Wed, Mar 11</div></td>
-                    <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
+                    <td class="time-cell">7:00 - 10:00 PM</td>
+                    <td>Rogers HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Rogers</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Thu, Mar 12</div></td>
+                    <td class="time-cell">7:00 - 10:00 PM</td>
+                    <td>Rogers HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Puyallup</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Fri, Mar 13</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Sat, Mar 14</div></td>
                     <td class="time-cell">10:30 AM - 3:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs Kelso</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs Kelso</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Mon, Mar 16</div></td>
@@ -119,29 +158,47 @@
                     <td>Upper Turf</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Mar 17</div></td>
+                    <td class="time-cell">4:30 - 7:30 PM</td>
+                    <td>River Ridge HS</td>
+                    <td><span class="badge badge-away">Away</span> @ River Ridge</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Mar 18</div></td>
+                    <td class="time-cell">4:00 - 7:00 PM</td>
+                    <td>North Thurston HS</td>
+                    <td><span class="badge badge-away">Away</span> @ North Thurston</td>
+                </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Thu, Mar 19</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Fri, Mar 20</div></td>
-                    <td class="time-cell">2:30 - 6:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs Lakes</td>
+                    <td class="time-cell">4:00 - 6:30 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs Lakes</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Mon, Mar 23</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Mar 24</div></td>
+                    <td class="time-cell">4:00 - 7:00 PM</td>
+                    <td>Bellarmine HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Bellarmine</td>
+                </tr>
+                <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Wed, Mar 25</div></td>
-                    <td class="time-cell">2:30 - 6:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs Bellarmine</td>
+                    <td class="time-cell">4:00 - 6:30 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs Bellarmine</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Thu, Mar 26</div></td>
@@ -152,14 +209,14 @@
                 <tr>
                     <td class="date-cell"><div class="date-day">Fri, Mar 27</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Sat, Mar 28</div></td>
                     <td class="time-cell">9:30 AM - 2:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs West Seattle</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs West Seattle</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Mon, Mar 30</div></td>
@@ -169,14 +226,20 @@
                 </tr>
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Tue, Mar 31</div></td>
-                    <td class="time-cell">2:30 - 6:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs Silas</td>
+                    <td class="time-cell">4:00 - 6:30 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs Silas</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Apr 1</div></td>
+                    <td class="time-cell">4:30 - 7:30 PM</td>
+                    <td>Silas HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Silas</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Thu, Apr 2</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
@@ -186,15 +249,21 @@
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Mon, Apr 6</div></td>
+                    <td class="time-cell">4:00 - 7:00 PM</td>
+                    <td>Lincoln HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Lincoln</td>
+                </tr>
+                <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Tue, Apr 7</div></td>
-                    <td class="time-cell">2:30 - 6:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs Lincoln</td>
+                    <td class="time-cell">4:00 - 6:30 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs Lincoln</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Wed, Apr 8</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
@@ -206,14 +275,26 @@
                 <tr>
                     <td class="date-cell"><div class="date-day">Fri, Apr 10</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Apr 11</div></td>
+                    <td class="time-cell">3:00 - 6:00 PM</td>
+                    <td>Cheney Stadium</td>
+                    <td><span class="badge badge-home">Home</span> vs Curtis</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Mon, Apr 13</div></td>
+                    <td class="time-cell">4:30 - 7:30 PM</td>
+                    <td>Mt Tahoma HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Mt Tahoma</td>
+                </tr>
+                <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Tue, Apr 14</div></td>
-                    <td class="time-cell">2:30 - 6:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs Mt Tahoma</td>
+                    <td class="time-cell">4:00 - 6:30 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs Mt Tahoma</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Wed, Apr 15</div></td>
@@ -224,7 +305,7 @@
                 <tr>
                     <td class="date-cell"><div class="date-day">Thu, Apr 16</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
@@ -236,14 +317,20 @@
                 <tr>
                     <td class="date-cell"><div class="date-day">Mon, Apr 20</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Tue, Apr 21</div></td>
-                    <td class="time-cell">2:30 - 6:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs Central Kitsap</td>
+                    <td class="time-cell">4:00 - 6:30 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs Central Kitsap</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Apr 22</div></td>
+                    <td class="time-cell">4:00 - 6:30 PM</td>
+                    <td>Central Kitsap HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Central Kitsap</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Thu, Apr 23</div></td>
@@ -254,7 +341,7 @@
                 <tr>
                     <td class="date-cell"><div class="date-day">Fri, Apr 24</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
@@ -265,20 +352,20 @@
                 </tr>
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Tue, Apr 28</div></td>
-                    <td class="time-cell">2:30 - 6:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs Peninsula</td>
+                    <td class="time-cell">4:00 - 6:30 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs Peninsula</td>
                 </tr>
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Wed, Apr 29</div></td>
-                    <td class="time-cell">2:30 - 6:30 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-game">Game</span> vs Capital</td>
+                    <td class="time-cell">4:00 - 6:30 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-home">Home</span> vs Capital</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Thu, Apr 30</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
@@ -290,13 +377,19 @@
                 <tr>
                     <td class="date-cell"><div class="date-day">Mon, May 4</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, May 5</div></td>
+                    <td class="time-cell">4:00 - 7:00 PM</td>
+                    <td>Timberline HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Timberline</td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Wed, May 6</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
@@ -308,7 +401,7 @@
                 <tr>
                     <td class="date-cell"><div class="date-day">Fri, May 8</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
@@ -320,7 +413,7 @@
                 <tr>
                     <td class="date-cell"><div class="date-day">Tue, May 12</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
@@ -332,65 +425,11 @@
                 <tr>
                     <td class="date-cell"><div class="date-day">Thu, May 14</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
+                    <td>Sehmel #1</td>
                     <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
-                    <td class="date-cell"><div class="date-day">Mon, May 18</div></td>
-                    <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
-                </tr>
-                <tr>
-                    <td class="date-cell"><div class="date-day">Tue, May 19</div></td>
-                    <td class="time-cell">6:30 - 9:00 PM</td>
-                    <td>Upper Turf</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
-                </tr>
-                <tr>
-                    <td class="date-cell"><div class="date-day">Wed, May 20</div></td>
-                    <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
-                </tr>
-                <tr>
-                    <td class="date-cell"><div class="date-day">Thu, May 21</div></td>
-                    <td class="time-cell">6:30 - 9:00 PM</td>
-                    <td>Upper Turf</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
-                </tr>
-                <tr>
-                    <td class="date-cell"><div class="date-day">Fri, May 22</div></td>
-                    <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
-                </tr>
-                <tr>
-                    <td class="date-cell"><div class="date-day">Mon, May 25</div></td>
-                    <td class="time-cell">6:30 - 9:00 PM</td>
-                    <td>Upper Turf</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
-                </tr>
-                <tr>
-                    <td class="date-cell"><div class="date-day">Tue, May 26</div></td>
-                    <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
-                </tr>
-                <tr>
-                    <td class="date-cell"><div class="date-day">Wed, May 27</div></td>
-                    <td class="time-cell">6:30 - 9:00 PM</td>
-                    <td>Upper Turf</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
-                </tr>
-                <tr>
-                    <td class="date-cell"><div class="date-day">Thu, May 28</div></td>
-                    <td class="time-cell">2:30 - 5:00 PM</td>
-                    <td>Sehmel 1</td>
-                    <td><span class="badge badge-practice">Practice</span></td>
-                </tr>
-                <tr>
-                    <td class="date-cell"><div class="date-day">Fri, May 29</div></td>
+                    <td class="date-cell"><div class="date-day">Fri, May 15</div></td>
                     <td class="time-cell">6:30 - 9:00 PM</td>
                     <td>Upper Turf</td>
                     <td><span class="badge badge-practice">Practice</span></td>
@@ -401,118 +440,22 @@
 
     <!-- ==================== JV ==================== -->
     <div id="tab-jv" class="tab-content">
-        <div class="calendar-summary">
-            <div class="summary-stat"><div class="num">39</div><div class="lbl">Total Events</div></div>
-            <div class="summary-stat"><div class="num">11</div><div class="lbl">Home Games</div></div>
-            <div class="summary-stat"><div class="num">28</div><div class="lbl">Practices</div></div>
+        <div class="content-card" style="text-align: center; padding: 48px 24px;">
+            <h3>JV Calendar Coming Soon</h3>
+            <p style="color: var(--text-muted);">The JV master calendar will be posted once schedules are finalized.</p>
         </div>
-        <table class="schedule-table calendar-table">
-            <thead>
-                <tr><th>Date</th><th>Time</th><th>Location</th><th>Event</th></tr>
-            </thead>
-            <tbody>
-                <tr><td class="date-cell"><div class="date-day">Mon, Mar 9</div></td><td class="time-cell">5:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Tue, Mar 10</div></td><td class="time-cell">2:30 - 5:00 PM</td><td>Sehmel 2</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Wed, Mar 11</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Rogers</td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Thu, Mar 12</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Puyallup</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Mar 13</div></td><td class="time-cell">5:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Sat, Mar 14</div></td><td class="time-cell">10:00 AM - 3:00 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Kelso</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Mar 16</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Mar 19</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Fri, Mar 20</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Lakes</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Mar 23</div></td><td class="time-cell">7:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Wed, Mar 25</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Bellarmine</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Mar 26</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Mar 27</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Mar 30</div></td><td class="time-cell">2:30 - 5:00 PM</td><td>Sehmel 2</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Tue, Mar 31</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Wed, Apr 1</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Silas</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 2</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Apr 3</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Mon, Apr 6</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Lincoln</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, Apr 8</div></td><td class="time-cell">7:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 9</div></td><td class="time-cell">2:30 - 5:00 PM</td><td>Sehmel 2</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Apr 10</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Mon, Apr 13</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Mount Tahoma</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, Apr 15</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 16</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Apr 20</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Tue, Apr 21</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Central Kitsap</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 23</div></td><td class="time-cell">2:30 - 5:00 PM</td><td>Sehmel 2</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Apr 24</div></td><td class="time-cell">7:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Sat, Apr 25</div></td><td class="time-cell">9:00 AM - 4:00 PM</td><td>Sehmel 1</td><td><span class="badge badge-game">Game</span> vs West Seattle</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Apr 27</div></td><td class="time-cell">2:30 - 5:00 PM</td><td>Sehmel 2</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Tue, Apr 28</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Peninsula</td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Wed, Apr 29</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs Capital</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 30</div></td><td class="time-cell">7:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, May 1</div></td><td class="time-cell">2:30 - 5:00 PM</td><td>Sehmel 2</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, May 4</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, May 6</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, May 7</div></td><td class="time-cell">2:30 - 5:00 PM</td><td>Sehmel 2</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, May 8</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-            </tbody>
-        </table>
     </div>
 
     <!-- ==================== C TEAM ==================== -->
     <div id="tab-cteam" class="tab-content">
-        <div class="calendar-summary">
-            <div class="summary-stat"><div class="num">41</div><div class="lbl">Total Events</div></div>
-            <div class="summary-stat"><div class="num">4</div><div class="lbl">Home Games</div></div>
-            <div class="summary-stat"><div class="num">37</div><div class="lbl">Practices</div></div>
+        <div class="content-card" style="text-align: center; padding: 48px 24px;">
+            <h3>C Team Calendar Coming Soon</h3>
+            <p style="color: var(--text-muted);">The C Team master calendar will be posted once schedules are finalized.</p>
         </div>
-        <table class="schedule-table calendar-table">
-            <thead>
-                <tr><th>Date</th><th>Time</th><th>Location</th><th>Event</th></tr>
-            </thead>
-            <tbody>
-                <tr><td class="date-cell"><div class="date-day">Mon, Mar 9</div></td><td class="time-cell">5:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Tue, Mar 10</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, Mar 11</div></td><td class="time-cell">5:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Mar 12</div></td><td class="time-cell">5:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Mar 13</div></td><td class="time-cell">5:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Mar 16</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Tue, Mar 17</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs PHS</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, Mar 18</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Mar 19</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Mar 20</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Sat, Mar 21</div></td><td class="time-cell">10:00 AM - 5:00 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs South Kitsap DH</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Mar 23</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, Mar 25</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Mar 26</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Mar 27</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Mar 30</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Tue, Mar 31</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-game">Game</span> vs PHS</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, Apr 1</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 2</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Apr 3</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Apr 6</div></td><td class="time-cell">7:00 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, Apr 8</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 9</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Apr 13</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Tue, Apr 14</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 16</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Apr 20</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Tue, Apr 21</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, Apr 22</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 23</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, Apr 24</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr class="event-game"><td class="date-cell"><div class="date-day">Sat, Apr 25</div></td><td class="time-cell">9:00 AM - 4:00 PM</td><td>Sehmel 1</td><td><span class="badge badge-game">Game</span> vs West Seattle</td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, Apr 27</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, Apr 29</div></td><td class="time-cell">6:30 - 9:00 PM</td><td>Upper Turf</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, Apr 30</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, May 1</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Mon, May 4</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Tue, May 5</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Wed, May 6</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Thu, May 7</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-                <tr><td class="date-cell"><div class="date-day">Fri, May 8</div></td><td class="time-cell">2:30 - 6:30 PM</td><td>GHHS Baseball</td><td><span class="badge badge-practice">Practice</span></td></tr>
-            </tbody>
-        </table>
     </div>
 
     <p style="text-align:center; color: var(--text-muted); font-size: 0.82rem; margin-top: 8px;">
-        Note: This calendar only shows home practices and home games with field assignments. Away games are listed on the <a href="schedule.html">game schedule</a>.
+        All times are Pacific. Schedule subject to change &mdash; check with coaches for the latest updates.
     </p>
 </div>
 
