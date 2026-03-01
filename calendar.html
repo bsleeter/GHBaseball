@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Calendar - Gig Harbor Tides Baseball</title>
     <link rel="stylesheet" href="css/styles.css?v=4">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js"></script>
     <style>
         .calendar-table { margin-bottom: 40px; }
         .calendar-table td { font-size: 0.88rem; }
@@ -17,6 +18,37 @@
         .summary-stat { background: var(--white); border-radius: var(--radius-sm); padding: 12px 20px; box-shadow: var(--shadow); text-align: center; }
         .summary-stat .num { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--carolina); }
         .summary-stat .lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+
+        /* View toggle */
+        .view-toggle { display: flex; gap: 8px; margin-bottom: 20px; }
+        .view-btn {
+            padding: 6px 18px; border: 2px solid var(--navy); border-radius: var(--radius-sm);
+            background: var(--white); color: var(--navy); font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s;
+        }
+        .view-btn.active, .view-btn:hover { background: var(--carolina); color: var(--white); border-color: var(--carolina); }
+
+        /* FullCalendar container */
+        .fc-container { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; margin-bottom: 40px; }
+
+        /* FullCalendar theme overrides */
+        .fc .fc-toolbar-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--navy); }
+        .fc .fc-button { background: var(--navy); border-color: var(--navy); font-size: 0.85rem; }
+        .fc .fc-button:hover { background: var(--carolina); border-color: var(--carolina); }
+        .fc .fc-button-active { background: var(--carolina) !important; border-color: var(--carolina) !important; }
+        .fc .fc-col-header-cell { background: var(--navy); }
+        .fc .fc-col-header-cell-cushion { color: var(--white); text-decoration: none; font-size: 0.85rem; }
+        .fc .fc-daygrid-day.fc-day-today { background: rgba(108,171,224,0.12); }
+        .fc .fc-daygrid-day-number { color: var(--navy); text-decoration: none; font-size: 0.85rem; }
+        .fc .fc-daygrid-event { border-radius: 4px; padding: 1px 4px; font-size: 0.78rem; cursor: default; }
+        .fc .fc-list-day-cushion { background: var(--navy) !important; }
+        .fc .fc-list-day-cushion a { color: var(--white) !important; text-decoration: none; }
+        .fc .fc-more-link { color: var(--carolina); font-weight: 600; }
+        .fc td, .fc th { border-color: #e0e0e0; }
+        @media (max-width: 700px) {
+            .fc .fc-toolbar { flex-direction: column; gap: 8px; }
+            .fc .fc-toolbar-title { font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -25,7 +57,7 @@
 <nav class="site-nav">
     <div class="nav-inner">
         <a href="index.html" class="nav-brand">
-            <img src="Logos/Tides Logo.png" alt="Tides">
+            <img src="Logos/GH Logo.png" alt="Gig Harbor">
             <span>Tides Baseball</span>
         </a>
         <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
@@ -58,13 +90,18 @@
         <button class="tab-btn" onclick="switchTab('cteam')">C Team</button>
     </div>
 
+    <div class="view-toggle">
+        <button class="view-btn active" onclick="switchView('list')">&#9776; List</button>
+        <button class="view-btn" onclick="switchView('calendar')">&#128197; Calendar</button>
+    </div>
+
     <!-- ==================== VARSITY ==================== -->
     <div id="tab-varsity" class="tab-content active">
         <div class="calendar-summary">
             <div class="summary-stat"><div class="num">59</div><div class="lbl">Total Events</div></div>
             <div class="summary-stat"><div class="num">11</div><div class="lbl">Home Games</div></div>
             <div class="summary-stat"><div class="num">10</div><div class="lbl">Away Games</div></div>
-            <div class="summary-stat"><div class="num">33</div><div class="lbl">Practices</div></div>
+            <div class="summary-stat"><div class="num">34</div><div class="lbl">Practices</div></div>
         </div>
 
         <!-- Legend -->
@@ -102,7 +139,7 @@
                     <td class="date-cell"><div class="date-day">Thu, Mar 5</div></td>
                     <td class="time-cell">2:30 - 5:00 PM</td>
                     <td>Sehmel #1</td>
-                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                    <td><span class="badge badge-practice">Practice</span></td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Fri, Mar 6</div></td>
@@ -112,9 +149,9 @@
                 </tr>
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Sat, Mar 7</div></td>
-                    <td class="time-cell">8:00 AM - 3:00 PM</td>
+                    <td class="time-cell">10:00 AM - 3:00 PM</td>
                     <td>Sehmel #1</td>
-                    <td><span class="badge badge-roundrobin">Jamboree</span></td>
+                    <td><span class="badge badge-roundrobin">Jamboree</span> <span style="font-size:0.8rem; color:var(--text-light);">vs. Peninsula &amp; Silas (3-inn games)</span></td>
                 </tr>
                 <tr>
                     <td class="date-cell"><div class="date-day">Mon, Mar 9</div></td>
@@ -250,7 +287,7 @@
                 </tr>
                 <tr class="event-game">
                     <td class="date-cell"><div class="date-day">Mon, Apr 6</div></td>
-                    <td class="time-cell">4:00 - 7:00 PM</td>
+                    <td class="time-cell">4:30 - 7:30 PM</td>
                     <td>Lincoln HS</td>
                     <td><span class="badge badge-away">Away</span> @ Lincoln</td>
                 </tr>
@@ -436,22 +473,709 @@
                 </tr>
             </tbody>
         </table>
+        <div id="fc-varsity" class="fc-container" style="display:none;"></div>
     </div>
 
     <!-- ==================== JV ==================== -->
     <div id="tab-jv" class="tab-content">
-        <div class="content-card" style="text-align: center; padding: 48px 24px;">
-            <h3>JV Calendar Coming Soon</h3>
-            <p style="color: var(--text-muted);">The JV master calendar will be posted once schedules are finalized.</p>
+        <div class="calendar-summary">
+            <div class="summary-stat"><div class="num">52</div><div class="lbl">Total Events</div></div>
+            <div class="summary-stat"><div class="num">12</div><div class="lbl">Home Games</div></div>
+            <div class="summary-stat"><div class="num">9</div><div class="lbl">Away Games</div></div>
+            <div class="summary-stat"><div class="num">28</div><div class="lbl">Practices</div></div>
         </div>
+
+        <!-- Legend -->
+        <div class="legend" style="margin-bottom: 16px;">
+            <div class="legend-item"><span class="badge badge-home">Home</span> Home Game</div>
+            <div class="legend-item"><span class="badge badge-away">Away</span> Away Game</div>
+            <div class="legend-item"><span class="badge badge-practice">Practice</span> Practice</div>
+            <div class="legend-item"><span class="badge badge-tryout">Tryouts</span> Tryouts</div>
+        </div>
+
+        <table class="schedule-table calendar-table">
+            <thead>
+                <tr><th>Date</th><th>Time</th><th>Location</th><th>Event</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 2</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Tue, Mar 3</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Mar 4</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Mar 5</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Mar 6</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 9</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Tue, Mar 10</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #2</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Mar 11</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Rogers</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Thu, Mar 12</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Puyallup</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Mar 13</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Mar 14</div></td>
+                    <td class="time-cell">12:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Kelso</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 16</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Mar 17</div></td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td>River Ridge HS</td>
+                    <td><span class="badge badge-away">Away</span> @ River Ridge</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Mar 18</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>North Thurston HS</td>
+                    <td><span class="badge badge-away">Away</span> @ North Thurston</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Mar 19</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Fri, Mar 20</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Lakes</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 23</div></td>
+                    <td class="time-cell">7:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Mar 24</div></td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td>Bellarmine HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Bellarmine</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Mar 25</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Bellarmine</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Mar 26</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Mar 27</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 30</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #2</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Mar 31</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>Silas HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Silas</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Apr 1</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Silas</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 2</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Apr 3</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Mon, Apr 6</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Lincoln</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Apr 7</div></td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td>Lincoln HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Lincoln</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Apr 8</div></td>
+                    <td class="time-cell">7:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 9</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #2</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Apr 10</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Apr 11</div></td>
+                    <td class="time-cell">12:00 PM</td>
+                    <td>Curtis HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Curtis</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Mon, Apr 13</div></td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Mount Tahoma</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Apr 14</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>Mt Tahoma HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Mount Tahoma</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Apr 15</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 16</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Apr 17</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Apr 20</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Apr 21</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Central Kitsap</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Apr 22</div></td>
+                    <td class="time-cell">6:00 PM</td>
+                    <td>Central Kitsap HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Central Kitsap</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 23</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #2</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Apr 24</div></td>
+                    <td class="time-cell">7:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Apr 25</div></td>
+                    <td class="time-cell">11:00 AM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs West Seattle</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Apr 27</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #2</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Apr 28</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Peninsula</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Apr 29</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Capital</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 30</div></td>
+                    <td class="time-cell">7:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, May 1</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #2</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, May 4</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, May 5</div></td>
+                    <td class="time-cell">4:30 PM</td>
+                    <td>Timberline HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Timberline</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, May 6</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, May 7</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #2</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="fc-jv" class="fc-container" style="display:none;"></div>
     </div>
 
     <!-- ==================== C TEAM ==================== -->
     <div id="tab-cteam" class="tab-content">
-        <div class="content-card" style="text-align: center; padding: 48px 24px;">
-            <h3>C Team Calendar Coming Soon</h3>
-            <p style="color: var(--text-muted);">The C Team master calendar will be posted once schedules are finalized.</p>
+        <div class="calendar-summary">
+            <div class="summary-stat"><div class="num">61</div><div class="lbl">Total Events</div></div>
+            <div class="summary-stat"><div class="num">8</div><div class="lbl">Home Games</div></div>
+            <div class="summary-stat"><div class="num">12</div><div class="lbl">Away Games</div></div>
+            <div class="summary-stat"><div class="num">38</div><div class="lbl">Practices</div></div>
         </div>
+
+        <!-- Legend -->
+        <div class="legend" style="margin-bottom: 16px;">
+            <div class="legend-item"><span class="badge badge-home">Home</span> Home Game</div>
+            <div class="legend-item"><span class="badge badge-away">Away</span> Away Game</div>
+            <div class="legend-item"><span class="badge badge-practice">Practice</span> Practice</div>
+            <div class="legend-item"><span class="badge badge-tryout">Tryouts</span> Tryouts</div>
+        </div>
+
+        <table class="schedule-table calendar-table">
+            <thead>
+                <tr><th>Date</th><th>Time</th><th>Location</th><th>Event</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 2</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Tue, Mar 3</div></td>
+                    <td class="time-cell">2:30 - 5:00 PM</td>
+                    <td>Sehmel #1</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Mar 4</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-tryout">Tryouts</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Mar 5</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Mar 6</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 9</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Tue, Mar 10</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Mar 11</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Mar 12</div></td>
+                    <td class="time-cell">5:00 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Mar 13</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Mar 14</div></td>
+                    <td class="time-cell">11:00 AM &amp; 1:00 PM</td>
+                    <td>North Kitsap HS</td>
+                    <td><span class="badge badge-away">Away</span> @ North Kitsap</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 16</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Tue, Mar 17</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Mar 18</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Thu, Mar 19</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs PHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Mar 20</div></td>
+                    <td class="time-cell">&mdash;</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Mar 21</div></td>
+                    <td class="time-cell">11:00 AM &amp; 2:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs South Kitsap (DH)</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 23</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Mar 24</div></td>
+                    <td class="time-cell">3:30 PM</td>
+                    <td>PRC</td>
+                    <td><span class="badge badge-away">Away</span> @ Puyallup</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Mar 25</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Mar 26</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Mar 27</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Mar 28</div></td>
+                    <td class="time-cell">TBD</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs Steilacoom (DH)</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Mar 30</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Mar 31</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs PHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Apr 1</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 2</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Apr 3</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Apr 4</div></td>
+                    <td class="time-cell">11:00 AM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-home">Home</span> vs North Kitsap</td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Apr 7</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>PHS</td>
+                    <td><span class="badge badge-away">Away</span> @ PHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Apr 8</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 9</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Fri, Apr 10</div></td>
+                    <td class="time-cell">3:30 PM</td>
+                    <td>PRC</td>
+                    <td><span class="badge badge-away">Away</span> @ Puyallup</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Apr 13</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Tue, Apr 14</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Wed, Apr 15</div></td>
+                    <td class="time-cell">3:30 PM</td>
+                    <td>PRC</td>
+                    <td><span class="badge badge-away">Away</span> @ Puyallup</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 16</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Apr 17</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Apr 18</div></td>
+                    <td class="time-cell">11:00 AM &amp; 2:00 PM</td>
+                    <td>Bellarmine HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Bellarmine (DH)</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Apr 20</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Tue, Apr 21</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Apr 22</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 23</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, Apr 24</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, Apr 25</div></td>
+                    <td class="time-cell">2:00 PM</td>
+                    <td>Sehmel</td>
+                    <td><span class="badge badge-home">Home</span> vs West Seattle</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, Apr 27</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Tue, Apr 28</div></td>
+                    <td class="time-cell">4:00 PM</td>
+                    <td>PHS</td>
+                    <td><span class="badge badge-away">Away</span> @ PHS</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, Apr 29</div></td>
+                    <td class="time-cell">6:30 - 9:00 PM</td>
+                    <td>Upper Turf</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, Apr 30</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Fri, May 1</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Sat, May 2</div></td>
+                    <td class="time-cell">11:00 AM &amp; 2:00 PM</td>
+                    <td>Bellarmine HS</td>
+                    <td><span class="badge badge-away">Away</span> @ Bellarmine (DH)</td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Mon, May 4</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Tue, May 5</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Wed, May 6</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr>
+                    <td class="date-cell"><div class="date-day">Thu, May 7</div></td>
+                    <td class="time-cell">2:30 - 6:30 PM</td>
+                    <td>GHHS</td>
+                    <td><span class="badge badge-practice">Practice</span></td>
+                </tr>
+                <tr class="event-game">
+                    <td class="date-cell"><div class="date-day">Fri, May 8</div></td>
+                    <td class="time-cell">3:30 PM</td>
+                    <td>PRC</td>
+                    <td><span class="badge badge-away">Away</span> @ Puyallup</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="fc-cteam" class="fc-container" style="display:none;"></div>
     </div>
 
     <p style="text-align:center; color: var(--text-muted); font-size: 0.82rem; margin-top: 8px;">
@@ -487,15 +1211,244 @@
 </footer>
 
 <script>
+var currentView = 'list';
+var calendarInstances = {};
+
+var varsityEvents = [
+{title:'Tryouts',start:'2026-03-02T17:00:00',end:'2026-03-02T21:00:00',backgroundColor:'#F3E5F5',borderColor:'#7B1FA2',textColor:'#7B1FA2',extendedProps:{type:'Tryouts',location:'Upper Turf'}},
+{title:'Tryouts',start:'2026-03-03T14:30:00',end:'2026-03-03T17:00:00',backgroundColor:'#F3E5F5',borderColor:'#7B1FA2',textColor:'#7B1FA2',extendedProps:{type:'Tryouts',location:'Sehmel #1'}},
+{title:'Tryouts',start:'2026-03-04T17:00:00',end:'2026-03-04T21:00:00',backgroundColor:'#F3E5F5',borderColor:'#7B1FA2',textColor:'#7B1FA2',extendedProps:{type:'Tryouts',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-05T14:30:00',end:'2026-03-05T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-03-06T17:00:00',end:'2026-03-06T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Jamboree',start:'2026-03-07T10:00:00',end:'2026-03-07T15:00:00',backgroundColor:'#FFF3E0',borderColor:'#E65100',textColor:'#E65100',extendedProps:{type:'Jamboree',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-03-09T14:30:00',end:'2026-03-09T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-03-10T17:00:00',end:'2026-03-10T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'@ Rogers',start:'2026-03-11T19:00:00',end:'2026-03-11T22:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Rogers HS'}},
+{title:'@ Puyallup',start:'2026-03-12T19:00:00',end:'2026-03-12T22:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Rogers HS'}},
+{title:'Practice',start:'2026-03-13T14:30:00',end:'2026-03-13T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'vs Kelso',start:'2026-03-14T10:30:00',end:'2026-03-14T15:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-03-16T19:00:00',end:'2026-03-16T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'@ River Ridge',start:'2026-03-17T16:30:00',end:'2026-03-17T19:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'River Ridge HS'}},
+{title:'@ North Thurston',start:'2026-03-18T16:00:00',end:'2026-03-18T19:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'North Thurston HS'}},
+{title:'Practice',start:'2026-03-19T14:30:00',end:'2026-03-19T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'vs Lakes',start:'2026-03-20T16:00:00',end:'2026-03-20T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-03-23T14:30:00',end:'2026-03-23T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'@ Bellarmine',start:'2026-03-24T16:00:00',end:'2026-03-24T19:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Bellarmine HS'}},
+{title:'vs Bellarmine',start:'2026-03-25T16:00:00',end:'2026-03-25T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-03-26T18:30:00',end:'2026-03-26T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-27T14:30:00',end:'2026-03-27T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'vs West Seattle',start:'2026-03-28T09:30:00',end:'2026-03-28T14:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-03-30T19:00:00',end:'2026-03-30T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'vs Silas',start:'2026-03-31T16:00:00',end:'2026-03-31T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'@ Silas',start:'2026-04-01T16:30:00',end:'2026-04-01T19:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Silas HS'}},
+{title:'Practice',start:'2026-04-02T14:30:00',end:'2026-04-02T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-04-03T18:30:00',end:'2026-04-03T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'@ Lincoln',start:'2026-04-06T16:30:00',end:'2026-04-06T19:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Lincoln HS'}},
+{title:'vs Lincoln',start:'2026-04-07T16:00:00',end:'2026-04-07T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-04-08T14:30:00',end:'2026-04-08T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-04-09T18:30:00',end:'2026-04-09T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-10T14:30:00',end:'2026-04-10T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'vs Curtis',start:'2026-04-11T15:00:00',end:'2026-04-11T18:00:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Cheney Stadium'}},
+{title:'@ Mt Tahoma',start:'2026-04-13T16:30:00',end:'2026-04-13T19:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Mt Tahoma HS'}},
+{title:'vs Mt Tahoma',start:'2026-04-14T16:00:00',end:'2026-04-14T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-04-15T18:30:00',end:'2026-04-15T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-16T14:30:00',end:'2026-04-16T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-04-17T18:30:00',end:'2026-04-17T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-20T14:30:00',end:'2026-04-20T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'vs Central Kitsap',start:'2026-04-21T16:00:00',end:'2026-04-21T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'@ Central Kitsap',start:'2026-04-22T16:00:00',end:'2026-04-22T18:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Central Kitsap HS'}},
+{title:'Practice',start:'2026-04-23T18:30:00',end:'2026-04-23T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-24T14:30:00',end:'2026-04-24T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-04-27T18:30:00',end:'2026-04-27T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'vs Peninsula',start:'2026-04-28T16:00:00',end:'2026-04-28T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'vs Capital',start:'2026-04-29T16:00:00',end:'2026-04-29T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-04-30T14:30:00',end:'2026-04-30T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-05-01T18:30:00',end:'2026-05-01T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-05-04T14:30:00',end:'2026-05-04T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'@ Timberline',start:'2026-05-05T16:00:00',end:'2026-05-05T19:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Timberline HS'}},
+{title:'Practice',start:'2026-05-06T14:30:00',end:'2026-05-06T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-05-07T18:30:00',end:'2026-05-07T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-05-08T14:30:00',end:'2026-05-08T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-05-11T18:30:00',end:'2026-05-11T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-05-12T14:30:00',end:'2026-05-12T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-05-13T18:30:00',end:'2026-05-13T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-05-14T14:30:00',end:'2026-05-14T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
+{title:'Practice',start:'2026-05-15T18:30:00',end:'2026-05-15T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}}
+];
+
+var jvEvents = [
+{title:'Tryouts',start:'2026-03-02T17:00:00',end:'2026-03-02T21:00:00',backgroundColor:'#F3E5F5',borderColor:'#7B1FA2',textColor:'#7B1FA2',extendedProps:{type:'Tryouts',location:'Upper Turf'}},
+{title:'Tryouts',start:'2026-03-03T14:30:00',end:'2026-03-03T17:00:00',backgroundColor:'#F3E5F5',borderColor:'#7B1FA2',textColor:'#7B1FA2',extendedProps:{type:'Tryouts',location:'Sehmel #1'}},
+{title:'Tryouts',start:'2026-03-04T17:00:00',end:'2026-03-04T21:00:00',backgroundColor:'#F3E5F5',borderColor:'#7B1FA2',textColor:'#7B1FA2',extendedProps:{type:'Tryouts',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-05T17:00:00',end:'2026-03-05T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-06T14:30:00',end:'2026-03-06T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-03-09T17:00:00',end:'2026-03-09T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-10T14:30:00',end:'2026-03-10T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #2'}},
+{title:'vs Rogers',start:'2026-03-11T16:00:00',end:'2026-03-11T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'vs Puyallup',start:'2026-03-12T16:00:00',end:'2026-03-12T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-03-13T17:00:00',end:'2026-03-13T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'vs Kelso',start:'2026-03-14T12:00:00',end:'2026-03-14T14:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-03-16T14:30:00',end:'2026-03-16T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'@ River Ridge',start:'2026-03-17T16:30:00',end:'2026-03-17T19:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'River Ridge HS'}},
+{title:'@ North Thurston',start:'2026-03-18T16:00:00',end:'2026-03-18T18:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'North Thurston HS'}},
+{title:'Practice',start:'2026-03-19T18:30:00',end:'2026-03-19T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'vs Lakes',start:'2026-03-20T16:00:00',end:'2026-03-20T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-03-23T19:00:00',end:'2026-03-23T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'@ Bellarmine',start:'2026-03-24T16:30:00',end:'2026-03-24T19:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Bellarmine HS'}},
+{title:'vs Bellarmine',start:'2026-03-25T16:00:00',end:'2026-03-25T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-03-26T14:30:00',end:'2026-03-26T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-03-27T18:30:00',end:'2026-03-27T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-30T14:30:00',end:'2026-03-30T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #2'}},
+{title:'@ Silas',start:'2026-03-31T16:00:00',end:'2026-03-31T18:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Silas HS'}},
+{title:'vs Silas',start:'2026-04-01T16:00:00',end:'2026-04-01T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-04-02T18:30:00',end:'2026-04-02T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-03T18:30:00',end:'2026-04-03T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'vs Lincoln',start:'2026-04-06T16:00:00',end:'2026-04-06T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'@ Lincoln',start:'2026-04-07T16:30:00',end:'2026-04-07T19:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Lincoln HS'}},
+{title:'Practice',start:'2026-04-08T19:00:00',end:'2026-04-08T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-09T14:30:00',end:'2026-04-09T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #2'}},
+{title:'Practice',start:'2026-04-10T14:30:00',end:'2026-04-10T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'@ Curtis',start:'2026-04-11T12:00:00',end:'2026-04-11T14:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Curtis HS'}},
+{title:'vs Mount Tahoma',start:'2026-04-13T16:30:00',end:'2026-04-13T19:00:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'@ Mount Tahoma',start:'2026-04-14T16:00:00',end:'2026-04-14T18:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Mt Tahoma HS'}},
+{title:'Practice',start:'2026-04-15T14:30:00',end:'2026-04-15T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-04-16T18:30:00',end:'2026-04-16T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-17T14:30:00',end:'2026-04-17T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-04-20T18:30:00',end:'2026-04-20T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'vs Central Kitsap',start:'2026-04-21T16:00:00',end:'2026-04-21T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'@ Central Kitsap',start:'2026-04-22T18:00:00',end:'2026-04-22T20:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Central Kitsap HS'}},
+{title:'Practice',start:'2026-04-23T14:30:00',end:'2026-04-23T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #2'}},
+{title:'Practice',start:'2026-04-24T19:00:00',end:'2026-04-24T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'vs West Seattle',start:'2026-04-25T11:00:00',end:'2026-04-25T13:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-04-27T14:30:00',end:'2026-04-27T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #2'}},
+{title:'vs Peninsula',start:'2026-04-28T16:00:00',end:'2026-04-28T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'vs Capital',start:'2026-04-29T16:00:00',end:'2026-04-29T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-04-30T19:00:00',end:'2026-04-30T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-05-01T14:30:00',end:'2026-05-01T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #2'}},
+{title:'Practice',start:'2026-05-04T18:30:00',end:'2026-05-04T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'@ Timberline',start:'2026-05-05T16:30:00',end:'2026-05-05T19:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Timberline HS'}},
+{title:'Practice',start:'2026-05-06T18:30:00',end:'2026-05-06T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-05-07T14:30:00',end:'2026-05-07T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #2'}}
+];
+
+var cteamEvents = [
+{title:'Tryouts',start:'2026-03-02T17:00:00',end:'2026-03-02T21:00:00',backgroundColor:'#F3E5F5',borderColor:'#7B1FA2',textColor:'#7B1FA2',extendedProps:{type:'Tryouts',location:'Upper Turf'}},
+{title:'Tryouts',start:'2026-03-03T14:30:00',end:'2026-03-03T17:00:00',backgroundColor:'#F3E5F5',borderColor:'#7B1FA2',textColor:'#7B1FA2',extendedProps:{type:'Tryouts',location:'Sehmel #1'}},
+{title:'Tryouts',start:'2026-03-04T17:00:00',end:'2026-03-04T21:00:00',backgroundColor:'#F3E5F5',borderColor:'#7B1FA2',textColor:'#7B1FA2',extendedProps:{type:'Tryouts',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-05T17:00:00',end:'2026-03-05T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-06T14:30:00',end:'2026-03-06T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-03-09T14:30:00',end:'2026-03-09T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-03-10T14:30:00',end:'2026-03-10T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-03-11T17:00:00',end:'2026-03-11T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-12T17:00:00',end:'2026-03-12T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-13T14:30:00',end:'2026-03-13T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'@ North Kitsap (G1)',start:'2026-03-14T11:00:00',end:'2026-03-14T13:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'North Kitsap HS'}},
+{title:'@ North Kitsap (G2)',start:'2026-03-14T13:00:00',end:'2026-03-14T15:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'North Kitsap HS'}},
+{title:'Practice',start:'2026-03-16T14:30:00',end:'2026-03-16T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-03-17T14:30:00',end:'2026-03-17T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-03-18T14:30:00',end:'2026-03-18T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'vs PHS',start:'2026-03-19T16:00:00',end:'2026-03-19T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-03-20',allDay:true,backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'vs South Kitsap (G1)',start:'2026-03-21T11:00:00',end:'2026-03-21T13:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'vs South Kitsap (G2)',start:'2026-03-21T14:00:00',end:'2026-03-21T16:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-03-23T14:30:00',end:'2026-03-23T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'@ Puyallup',start:'2026-03-24T15:30:00',end:'2026-03-24T18:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'PRC'}},
+{title:'Practice',start:'2026-03-25T18:30:00',end:'2026-03-25T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-03-26T14:30:00',end:'2026-03-26T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-03-27T14:30:00',end:'2026-03-27T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'vs Steilacoom (DH)',start:'2026-03-28',allDay:true,backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-03-30T14:30:00',end:'2026-03-30T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'vs PHS',start:'2026-03-31T16:00:00',end:'2026-03-31T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'Practice',start:'2026-04-01T18:30:00',end:'2026-04-01T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-02T14:30:00',end:'2026-04-02T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-04-03T18:30:00',end:'2026-04-03T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'vs North Kitsap',start:'2026-04-04T11:00:00',end:'2026-04-04T13:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'GHHS'}},
+{title:'@ PHS',start:'2026-04-07T16:00:00',end:'2026-04-07T18:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'PHS'}},
+{title:'Practice',start:'2026-04-08T14:30:00',end:'2026-04-08T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-04-09T14:30:00',end:'2026-04-09T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'@ Puyallup',start:'2026-04-10T15:30:00',end:'2026-04-10T18:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'PRC'}},
+{title:'Practice',start:'2026-04-13T18:30:00',end:'2026-04-13T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-14T18:30:00',end:'2026-04-14T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'@ Puyallup',start:'2026-04-15T15:30:00',end:'2026-04-15T18:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'PRC'}},
+{title:'Practice',start:'2026-04-16T14:30:00',end:'2026-04-16T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-04-17T14:30:00',end:'2026-04-17T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'@ Bellarmine (G1)',start:'2026-04-18T11:00:00',end:'2026-04-18T13:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Bellarmine HS'}},
+{title:'@ Bellarmine (G2)',start:'2026-04-18T14:00:00',end:'2026-04-18T16:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Bellarmine HS'}},
+{title:'Practice',start:'2026-04-20T14:30:00',end:'2026-04-20T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-04-21T18:30:00',end:'2026-04-21T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-22T14:30:00',end:'2026-04-22T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-04-23T14:30:00',end:'2026-04-23T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-04-24T14:30:00',end:'2026-04-24T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'vs West Seattle',start:'2026-04-25T14:00:00',end:'2026-04-25T16:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel'}},
+{title:'Practice',start:'2026-04-27T14:30:00',end:'2026-04-27T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'@ PHS',start:'2026-04-28T16:00:00',end:'2026-04-28T18:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'PHS'}},
+{title:'Practice',start:'2026-04-29T18:30:00',end:'2026-04-29T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'Practice',start:'2026-04-30T14:30:00',end:'2026-04-30T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-05-01T14:30:00',end:'2026-05-01T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'@ Bellarmine (G1)',start:'2026-05-02T11:00:00',end:'2026-05-02T13:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Bellarmine HS'}},
+{title:'@ Bellarmine (G2)',start:'2026-05-02T14:00:00',end:'2026-05-02T16:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Bellarmine HS'}},
+{title:'Practice',start:'2026-05-04T14:30:00',end:'2026-05-04T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-05-05T14:30:00',end:'2026-05-05T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-05-06T14:30:00',end:'2026-05-06T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'Practice',start:'2026-05-07T14:30:00',end:'2026-05-07T18:30:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'GHHS'}},
+{title:'@ Puyallup',start:'2026-05-08T15:30:00',end:'2026-05-08T18:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'PRC'}}
+];
+
+var eventsByTeam = { varsity: varsityEvents, jv: jvEvents, cteam: cteamEvents };
+
+function initCalendar(team) {
+    var el = document.getElementById('fc-' + team);
+    var cal = new FullCalendar.Calendar(el, {
+        initialView: 'dayGridMonth',
+        initialDate: '2026-03-01',
+        headerToolbar: { left: 'prev,next,today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' },
+        buttonText: { today: 'Today', month: 'Month', week: 'Week', day: 'Day' },
+        height: 'auto',
+        navLinks: true,
+        dayMaxEvents: 3,
+        moreLinkClick: 'day',
+        eventTimeFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
+        events: eventsByTeam[team],
+        eventDidMount: function(info) {
+            var p = info.event.extendedProps;
+            info.el.title = p.type + ' - ' + p.location;
+        }
+    });
+    cal.render();
+    calendarInstances[team] = cal;
+}
+
+function switchView(view) {
+    currentView = view;
+    document.querySelectorAll('.view-btn').forEach(function(btn) { btn.classList.remove('active'); });
+    event.currentTarget.classList.add('active');
+    ['varsity','jv','cteam'].forEach(function(team) {
+        var tableWrapper = document.querySelector('#tab-' + team + ' .calendar-table');
+        var legend = document.querySelector('#tab-' + team + ' .legend');
+        var fcEl = document.getElementById('fc-' + team);
+        if (view === 'list') {
+            if (tableWrapper) tableWrapper.style.display = '';
+            if (legend) legend.style.display = '';
+            if (fcEl) fcEl.style.display = 'none';
+        } else {
+            if (tableWrapper) tableWrapper.style.display = 'none';
+            if (legend) legend.style.display = 'none';
+            if (fcEl) fcEl.style.display = '';
+            if (!calendarInstances[team]) { initCalendar(team); }
+            else { calendarInstances[team].updateSize(); }
+        }
+    });
+}
+
 function switchTab(tab) {
-    document.querySelectorAll('.tab-content').forEach(function(el) {
-        el.classList.remove('active');
-    });
-    document.querySelectorAll('.tab-btn').forEach(function(btn) {
-        btn.classList.remove('active');
-    });
+    document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(btn) { btn.classList.remove('active'); });
     document.getElementById('tab-' + tab).classList.add('active');
     event.currentTarget.classList.add('active');
+    if (currentView === 'calendar') {
+        if (!calendarInstances[tab]) { initCalendar(tab); }
+        else { setTimeout(function() { calendarInstances[tab].updateSize(); }, 0); }
+    }
 }
 </script>
 
