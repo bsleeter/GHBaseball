@@ -440,6 +440,43 @@ function switchGroup(id) {
     document.getElementById(id).classList.add('active');
     event.currentTarget.classList.add('active');
 }
+
+// Date-based plan routing
+// This page shows the plan for this date:
+var THIS_PAGE_DATE = '2026-03-05';
+
+// All available plan dates (sorted chronologically)
+var PLAN_DATES = [
+    '2026-03-02',
+    '2026-03-03',
+    '2026-03-04',
+    '2026-03-05'
+];
+
+(function() {
+    var now = new Date();
+    var today = now.getFullYear() + '-' +
+        String(now.getMonth() + 1).padStart(2, '0') + '-' +
+        String(now.getDate()).padStart(2, '0');
+
+    // If today matches this page, we're good
+    if (today === THIS_PAGE_DATE) return;
+
+    // Find the best plan: today's plan, or the most recent past plan
+    var target = null;
+    for (var i = PLAN_DATES.length - 1; i >= 0; i--) {
+        if (PLAN_DATES[i] <= today) {
+            target = PLAN_DATES[i];
+            break;
+        }
+    }
+
+    // If no past plan found, or the best match is this page, stay here
+    if (!target || target === THIS_PAGE_DATE) return;
+
+    // Redirect to the archived plan for that date
+    window.location.replace('plans/' + target + '.html');
+})();
 </script>
 
 </body>
