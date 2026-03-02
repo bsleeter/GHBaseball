@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 Tryouts - Practice Plan Archive - Gig Harbor Tides Baseball</title>
+    <link rel="stylesheet" href="../css/styles.css?v=4">
+    <style>
+        .plan-date-bar {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .plan-date-bar h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin: 0;
+            border: none;
+            padding: 0;
+            color: var(--white);
+        }
+        .plan-date-bar .plan-meta {
+            font-size: 0.9rem;
+            color: var(--carolina-light);
+            text-align: right;
+        }
+        .plan-date-bar .plan-meta strong {
+            color: var(--white);
+        }
+        .group-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .group-tab {
+            padding: 10px 24px;
+            border: none;
+            background: var(--white);
+            cursor: pointer;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow);
+            transition: all 0.2s;
+        }
+        .group-tab:hover {
+            color: var(--navy);
+            background: var(--light-bg);
+        }
+        .group-tab.active {
+            background: var(--carolina);
+            color: var(--white);
+        }
+        .group-panel {
+            display: none;
+        }
+        .group-panel.active {
+            display: block;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--carolina), var(--navy));
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            background: var(--carolina);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--carolina);
+        }
+        .timeline-time {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: var(--carolina-dark);
+            margin-bottom: 4px;
+        }
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .timeline-detail {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .station-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .station-card {
+            background: var(--light-bg);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            border-top: 4px solid var(--carolina);
+        }
+        .station-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+        .station-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .station-card li {
+            padding: 4px 0 4px 18px;
+            position: relative;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .station-card li::before {
+            content: '\25B8';
+            position: absolute;
+            left: 2px;
+            color: var(--carolina);
+            font-size: 0.75rem;
+        }
+        .station-card .station-note {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: rgba(75,156,211,0.1);
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: var(--navy);
+            font-weight: 500;
+        }
+        .rotation-note {
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin: 8px 0 4px;
+        }
+        .day-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .day-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--carolina);
+            text-decoration: none;
+        }
+        .day-nav a:hover {
+            color: var(--carolina-dark);
+        }
+        .day-nav .disabled {
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+        @media (max-width: 700px) {
+            .station-grid {
+                grid-template-columns: 1fr;
+            }
+            .plan-date-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .plan-date-bar .plan-meta {
+                text-align: center;
+            }
+        }
+        @media print {
+            .group-tabs, .day-nav { display: none; }
+            .group-panel { display: block !important; page-break-inside: avoid; margin-bottom: 40px; }
+            .group-panel::before {
+                content: attr(data-label);
+                display: block;
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 1.3rem;
+                letter-spacing: 2px;
+                color: var(--navy);
+                margin-bottom: 12px;
+                border-bottom: 2px solid var(--carolina);
+                padding-bottom: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-brand">
+            <img src="../Logos/GH Logo.png" alt="Gig Harbor">
+            <span>Tides Baseball</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../schedule.html">Schedule</a></li>
+            <li><a href="../calendar.html">Calendar</a></li>
+            <li><a href="../roster.html">Roster</a></li>
+            <li><a href="../practice.html">Practice</a></li>
+            <li><a href="../practiceplan.html" class="active">Daily Plan</a></li>
+            <li><a href="../photos.html">Photos</a></li>
+            <li><a href="../boosters.html">Boosters</a></li>
+            <li><a href="../conduct.html">Conduct</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="accent-bar"></div>
+
+<div class="page-container-narrow">
+
+    <!-- Day Navigation -->
+    <div class="day-nav">
+        <span class="disabled">&larr; Previous Day</span>
+        <a href="index.html">All Plans</a>
+        <a href="2026-03-03.html">Day 2 &rarr;</a>
+    </div>
+
+    <!-- Date & Location Bar -->
+    <div class="plan-date-bar">
+        <div>
+            <h2>Day 1 &mdash; Tryouts</h2>
+            <span style="font-size: 0.95rem; color: var(--carolina-light);">Monday, March 2, 2026</span>
+        </div>
+        <div class="plan-meta">
+            <strong>GHHS Upper Turf</strong><br>
+            9th/10th: 5:00 &ndash; 7:00 PM<br>
+            11th/12th: 7:00 &ndash; 9:00 PM
+        </div>
+    </div>
+
+    <!-- Group Tabs -->
+    <div class="group-tabs">
+        <button class="group-tab active" onclick="switchGroup('group910')">9th &amp; 10th Grade</button>
+        <button class="group-tab" onclick="switchGroup('group1112')">11th &amp; 12th Grade</button>
+    </div>
+
+    <!-- 9th & 10th Grade Plan -->
+    <div id="group910" class="group-panel active" data-label="9th &amp; 10th Grade &mdash; 5:00 &ndash; 7:00 PM">
+
+        <div class="practice-card">
+            <h3>Practice Flow</h3>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-time">5:00 PM</div>
+                    <div class="timeline-title">Welcome &amp; Overview</div>
+                    <div class="timeline-detail">
+                        Quick team meeting to cover the tryout plan, expectations, and station rotation order.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">5:10 PM</div>
+                    <div class="timeline-title">Stretch &amp; Throw</div>
+                    <div class="timeline-detail">
+                        Dynamic warm-up followed by partner throwing progression.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">5:25 PM</div>
+                    <div class="timeline-title">Station Rotations (3 Groups)</div>
+                    <div class="timeline-detail">
+                        Break into 3 even groups. Rotate through all three stations.
+                    </div>
+
+                    <div class="station-grid">
+                        <div class="station-card">
+                            <h4>Station 1: Infield</h4>
+                            <ul>
+                                <li>All players field from SS position, throw to 1B</li>
+                                <li>5&ndash;8 ground balls per player:</li>
+                                <li style="padding-left: 32px;">4&ndash;5 straight-on grounders</li>
+                                <li style="padding-left: 32px;">2 backhands</li>
+                                <li style="padding-left: 32px;">2 double play turns</li>
+                                <li style="padding-left: 32px;">1 slow roller</li>
+                                <li>First basemen (after others finish):</li>
+                                <li style="padding-left: 32px;">3 regular ground balls</li>
+                                <li style="padding-left: 32px;">2 DP turns</li>
+                                <li style="padding-left: 32px;">1 bunt</li>
+                            </ul>
+                            <div class="station-note">Record throwing velocity for all infielders</div>
+                        </div>
+
+                        <div class="station-card">
+                            <h4>Station 2: Outfield / Flyball</h4>
+                            <ul>
+                                <li>Mix of fly balls and ground balls</li>
+                                <li>Use a cutoff man</li>
+                                <li>Simulate throws to 3rd base</li>
+                            </ul>
+                            <div class="station-note">Record throwing velocity for all outfielders</div>
+                        </div>
+
+                        <div class="station-card">
+                            <h4>Station 3: 60-Yard Dash</h4>
+                            <ul>
+                                <li>Timed 60-yard sprints</li>
+                                <li>As many attempts as desired</li>
+                                <li>Goal: post best possible time</li>
+                            </ul>
+                            <div class="station-note">Record best 60 time for each player</div>
+                        </div>
+                    </div>
+                    <p class="rotation-note">~25 minutes per station with transition time</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">6:40 PM</div>
+                    <div class="timeline-title">Catchers &mdash; Block &amp; Throw</div>
+                    <div class="timeline-detail">
+                        Catchers block pitches in the dirt and throw down to bases. Evaluate blocking technique, footwork, pop time, and accuracy.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">7:00 PM</div>
+                    <div class="timeline-title">End</div>
+                    <div class="timeline-detail">
+                        Wrap up and dismiss. 11th/12th group arrives.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 11th & 12th Grade Plan -->
+    <div id="group1112" class="group-panel" data-label="11th &amp; 12th Grade &mdash; 7:00 &ndash; 9:00 PM">
+
+        <div class="practice-card">
+            <h3>Practice Flow</h3>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-time">7:00 PM</div>
+                    <div class="timeline-title">Welcome &amp; Overview</div>
+                    <div class="timeline-detail">
+                        Quick team meeting to cover the tryout plan, expectations, and station rotation order.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">7:10 PM</div>
+                    <div class="timeline-title">Stretch &amp; Throw</div>
+                    <div class="timeline-detail">
+                        Dynamic warm-up followed by partner throwing progression.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">7:25 PM</div>
+                    <div class="timeline-title">Station Rotations (3 Groups)</div>
+                    <div class="timeline-detail">
+                        Break into 3 even groups. Rotate through all three stations.
+                    </div>
+
+                    <div class="station-grid">
+                        <div class="station-card">
+                            <h4>Station 1: Infield</h4>
+                            <ul>
+                                <li>All players field from SS position, throw to 1B</li>
+                                <li>5&ndash;8 ground balls per player:</li>
+                                <li style="padding-left: 32px;">4&ndash;5 straight-on grounders</li>
+                                <li style="padding-left: 32px;">2 backhands</li>
+                                <li style="padding-left: 32px;">2 double play turns</li>
+                                <li style="padding-left: 32px;">1 slow roller</li>
+                                <li>First basemen (after others finish):</li>
+                                <li style="padding-left: 32px;">3 regular ground balls</li>
+                                <li style="padding-left: 32px;">2 DP turns</li>
+                                <li style="padding-left: 32px;">1 bunt</li>
+                            </ul>
+                            <div class="station-note">Record throwing velocity for all infielders</div>
+                        </div>
+
+                        <div class="station-card">
+                            <h4>Station 2: Outfield / Flyball</h4>
+                            <ul>
+                                <li>Mix of fly balls and ground balls</li>
+                                <li>Use a cutoff man</li>
+                                <li>Simulate throws to 3rd base</li>
+                            </ul>
+                            <div class="station-note">Record throwing velocity for all outfielders</div>
+                        </div>
+
+                        <div class="station-card">
+                            <h4>Station 3: 60-Yard Dash</h4>
+                            <ul>
+                                <li>Timed 60-yard sprints</li>
+                                <li>As many attempts as desired</li>
+                                <li>Goal: post best possible time</li>
+                            </ul>
+                            <div class="station-note">Record best 60 time for each player</div>
+                        </div>
+                    </div>
+                    <p class="rotation-note">~25 minutes per station with transition time</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">8:40 PM</div>
+                    <div class="timeline-title">Catchers &mdash; Block &amp; Throw</div>
+                    <div class="timeline-detail">
+                        Catchers block pitches in the dirt and throw down to bases. Evaluate blocking technique, footwork, pop time, and accuracy.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">9:00 PM</div>
+                    <div class="timeline-title">End</div>
+                    <div class="timeline-detail">
+                        Wrap up and dismiss.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Evaluation Checklist -->
+    <div class="notice-card" style="margin-top: 8px;">
+        <strong>Day 1 Evaluation Focus</strong>
+        Infield throwing velocity &bull; Outfield throwing velocity &bull; 60-yard dash times &bull; Catcher blocking &amp; pop times &bull; General athleticism &amp; effort
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <h3>Gig Harbor High School</h3>
+            <p>5101 Rosedale St NW<br>Gig Harbor, WA 98335</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="../schedule.html">Schedule</a></li>
+                <li><a href="../roster.html">Roster</a></li>
+                <li><a href="../practice.html">Practice Info</a></li>
+                <li><a href="../boosters.html">Booster Club</a></li>
+                <li><a href="../conduct.html">Code of Conduct</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <p>Social media links coming soon.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Gig Harbor Tides Baseball &bull; 2026 Season &bull; All times Pacific</p>
+    </div>
+</footer>
+
+<script>
+function switchGroup(id) {
+    document.querySelectorAll('.group-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.group-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+</script>
+
+</body>
+</html>

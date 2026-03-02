@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Plan Archive - Gig Harbor Tides Baseball</title>
+    <link rel="stylesheet" href="../css/styles.css?v=4">
+    <style>
+        .archive-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .archive-entry {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid var(--carolina);
+        }
+        .archive-entry:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: inherit;
+        }
+        .archive-date {
+            min-width: 70px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .archive-date .month {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--carolina);
+            font-weight: 700;
+        }
+        .archive-date .day {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--navy);
+            line-height: 1;
+        }
+        .archive-date .weekday {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+        .archive-info {
+            flex: 1;
+        }
+        .archive-info .archive-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .archive-info .archive-location {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        .archive-arrow {
+            color: var(--carolina);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--carolina);
+            text-decoration: none;
+            margin-bottom: 24px;
+        }
+        .back-link:hover {
+            color: var(--carolina-dark);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-brand">
+            <img src="../Logos/GH Logo.png" alt="Gig Harbor">
+            <span>Tides Baseball</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../schedule.html">Schedule</a></li>
+            <li><a href="../calendar.html">Calendar</a></li>
+            <li><a href="../roster.html">Roster</a></li>
+            <li><a href="../practice.html">Practice</a></li>
+            <li><a href="../practiceplan.html" class="active">Daily Plan</a></li>
+            <li><a href="../photos.html">Photos</a></li>
+            <li><a href="../boosters.html">Boosters</a></li>
+            <li><a href="../conduct.html">Conduct</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="accent-bar"></div>
+
+<div class="page-container-narrow">
+    <a href="../practiceplan.html" class="back-link">&larr; Back to Today&rsquo;s Plan</a>
+
+    <div class="page-header">
+        <h1>Practice Plan Archive</h1>
+        <p>Browse all past practice plans from the 2026 season</p>
+    </div>
+
+    <div class="archive-list">
+
+        <!-- Day 1 -->
+        <a href="2026-03-02.html" class="archive-entry">
+            <div class="archive-date">
+                <div class="month">Mar</div>
+                <div class="day">2</div>
+                <div class="weekday">Monday</div>
+            </div>
+            <div class="archive-info">
+                <div class="archive-title">Day 1 &mdash; Tryouts</div>
+                <div class="archive-location">GHHS Upper Turf &bull; 9th/10th 5&ndash;7 PM &bull; 11th/12th 7&ndash;9 PM</div>
+            </div>
+            <div class="archive-arrow">&rsaquo;</div>
+        </a>
+
+        <!-- Day 2 -->
+        <a href="2026-03-03.html" class="archive-entry">
+            <div class="archive-date">
+                <div class="month">Mar</div>
+                <div class="day">3</div>
+                <div class="weekday">Tuesday</div>
+            </div>
+            <div class="archive-info">
+                <div class="archive-title">Day 2 &mdash; Tryouts (Hitting)</div>
+                <div class="archive-location">Sehmel #1 &bull; 11th/12th 2:30&ndash;4 PM &bull; 9th/10th 3:30&ndash;5 PM</div>
+            </div>
+            <div class="archive-arrow">&rsaquo;</div>
+        </a>
+
+        <!-- Day 3 -->
+        <a href="2026-03-04.html" class="archive-entry">
+            <div class="archive-date">
+                <div class="month">Mar</div>
+                <div class="day">4</div>
+                <div class="weekday">Wednesday</div>
+            </div>
+            <div class="archive-info">
+                <div class="archive-title">Day 3 &mdash; Coaches Scrimmage</div>
+                <div class="archive-location">GHHS Upper Turf &bull; 9th/10th 5&ndash;7 PM &bull; 11th/12th 7&ndash;9 PM</div>
+            </div>
+            <div class="archive-arrow">&rsaquo;</div>
+        </a>
+
+        <!-- Day 4 -->
+        <a href="2026-03-05.html" class="archive-entry">
+            <div class="archive-date">
+                <div class="month">Mar</div>
+                <div class="day">5</div>
+                <div class="weekday">Thursday</div>
+            </div>
+            <div class="archive-info">
+                <div class="archive-title">Day 4 &mdash; Varsity Practice</div>
+                <div class="archive-location">Sehmel #1 &bull; Varsity 2:30&ndash;5:00 PM</div>
+            </div>
+            <div class="archive-arrow">&rsaquo;</div>
+        </a>
+
+        <!-- Add new days above this comment -->
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <h3>Gig Harbor High School</h3>
+            <p>5101 Rosedale St NW<br>Gig Harbor, WA 98335</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="../schedule.html">Schedule</a></li>
+                <li><a href="../roster.html">Roster</a></li>
+                <li><a href="../practice.html">Practice Info</a></li>
+                <li><a href="../boosters.html">Booster Club</a></li>
+                <li><a href="../conduct.html">Code of Conduct</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <p>Social media links coming soon.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Gig Harbor Tides Baseball &bull; 2026 Season &bull; All times Pacific</p>
+    </div>
+</footer>
+
+</body>
+</html>

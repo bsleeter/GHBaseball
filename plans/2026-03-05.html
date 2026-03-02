@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4 Varsity Practice - Practice Plan Archive - Gig Harbor Tides Baseball</title>
+    <link rel="stylesheet" href="../css/styles.css?v=4">
+    <style>
+        .plan-date-bar {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .plan-date-bar h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin: 0;
+            border: none;
+            padding: 0;
+            color: var(--white);
+        }
+        .plan-date-bar .plan-meta {
+            font-size: 0.9rem;
+            color: var(--carolina-light);
+            text-align: right;
+        }
+        .plan-date-bar .plan-meta strong {
+            color: var(--white);
+        }
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--carolina), var(--navy));
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            background: var(--carolina);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--carolina);
+        }
+        .timeline-time {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: var(--carolina-dark);
+            margin-bottom: 4px;
+        }
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .timeline-detail {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .station-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .station-card {
+            background: var(--light-bg);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            border-top: 4px solid var(--carolina);
+        }
+        .station-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+        .station-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .station-card li {
+            padding: 4px 0 4px 18px;
+            position: relative;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .station-card li::before {
+            content: '\25B8';
+            position: absolute;
+            left: 2px;
+            color: var(--carolina);
+            font-size: 0.75rem;
+        }
+        .station-card .station-note {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: rgba(75,156,211,0.1);
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: var(--navy);
+            font-weight: 500;
+        }
+        .day-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .day-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--carolina);
+            text-decoration: none;
+        }
+        .day-nav a:hover {
+            color: var(--carolina-dark);
+        }
+        .day-nav .disabled {
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+        @media (max-width: 900px) {
+            .station-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        @media (max-width: 700px) {
+            .station-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .plan-date-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .plan-date-bar .plan-meta {
+                text-align: center;
+            }
+        }
+        @media print {
+            .day-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-brand">
+            <img src="../Logos/GH Logo.png" alt="Gig Harbor">
+            <span>Tides Baseball</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../schedule.html">Schedule</a></li>
+            <li><a href="../calendar.html">Calendar</a></li>
+            <li><a href="../roster.html">Roster</a></li>
+            <li><a href="../practice.html">Practice</a></li>
+            <li><a href="../practiceplan.html" class="active">Daily Plan</a></li>
+            <li><a href="../photos.html">Photos</a></li>
+            <li><a href="../boosters.html">Boosters</a></li>
+            <li><a href="../conduct.html">Conduct</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="accent-bar"></div>
+
+<div class="page-container-narrow">
+
+    <!-- Day Navigation -->
+    <div class="day-nav">
+        <a href="2026-03-04.html">&larr; Day 3</a>
+        <a href="index.html">All Plans</a>
+        <span class="disabled">Next Day &rarr;</span>
+    </div>
+
+    <!-- Date & Location Bar -->
+    <div class="plan-date-bar">
+        <div>
+            <h2>Day 4 &mdash; Varsity Practice</h2>
+            <span style="font-size: 0.95rem; color: var(--carolina-light);">Thursday, March 5, 2026</span>
+        </div>
+        <div class="plan-meta">
+            <strong>Sehmel Homestead Park #1</strong><br>
+            Varsity: 2:30 &ndash; 5:00 PM
+        </div>
+    </div>
+
+    <div class="practice-card">
+        <h3>Practice Flow</h3>
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-time">2:30 PM</div>
+                <div class="timeline-title">Run, Stretch, Throw (RST)</div>
+                <div class="timeline-detail">
+                    Team run followed by dynamic stretching and partner throwing progression.
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">2:55 PM</div>
+                <div class="timeline-title">Positional Daily Drills</div>
+                <div class="timeline-detail">
+                    Break into positional groups for focused skill work.
+                </div>
+
+                <div class="station-grid" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="station-card">
+                        <h4>Infielders</h4>
+                        <ul>
+                            <li>Ground ball fundamentals</li>
+                            <li>Footwork &amp; throwing mechanics</li>
+                            <li>Double play turns</li>
+                            <li>Slow rollers &amp; bare hand</li>
+                        </ul>
+                    </div>
+
+                    <div class="station-card">
+                        <h4>Outfielders</h4>
+                        <ul>
+                            <li>Drop steps &amp; routes</li>
+                            <li>Fly ball reads</li>
+                            <li>Crow hop &amp; throwing accuracy</li>
+                            <li>Communication on balls in gaps</li>
+                        </ul>
+                    </div>
+
+                    <div class="station-card">
+                        <h4>Catchers</h4>
+                        <ul>
+                            <li>Receiving &amp; framing</li>
+                            <li>Blocking drills</li>
+                            <li>Pop time / throws to 2nd</li>
+                            <li>Fielding bunts &amp; plays at plate</li>
+                        </ul>
+                    </div>
+
+                    <div class="station-card">
+                        <h4>Pitchers</h4>
+                        <ul>
+                            <li>Flat ground work</li>
+                            <li>Pick-off moves</li>
+                            <li>PFP (Pitcher Fielding Practice)</li>
+                            <li>Arm care &amp; band work</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">3:10 PM</div>
+                <div class="timeline-title">Live At-Bats</div>
+                <div class="timeline-detail">
+                    Split into 2 teams and go live with pitchers on the mound. Selected pitchers will throw 20&ndash;30 pitches to live hitters in game situations. Coaches may select specific match-ups for evaluation purposes.
+                </div>
+
+                <div class="station-grid">
+                    <div class="station-card">
+                        <h4>Pitchers</h4>
+                        <ul>
+                            <li>Selected arms throw 20&ndash;30 pitches each</li>
+                            <li>Work on attacking the zone</li>
+                            <li>Mix pitches &amp; work on sequencing</li>
+                            <li>Coaches may call specific pitch counts or situations</li>
+                        </ul>
+                    </div>
+
+                    <div class="station-card">
+                        <h4>Hitters</h4>
+                        <ul>
+                            <li>Compete in live at-bats</li>
+                            <li>Execute situational hitting</li>
+                            <li>Show plate discipline &amp; approach</li>
+                            <li>Run out every play</li>
+                        </ul>
+                    </div>
+
+                    <div class="station-card">
+                        <h4>Defense</h4>
+                        <ul>
+                            <li>Full defensive alignment</li>
+                            <li>Live game situations</li>
+                            <li>Communication &amp; positioning</li>
+                            <li>Coaches rotate players through positions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">4:45 PM</div>
+                <div class="timeline-title">Conditioning &amp; Wrap Up</div>
+                <div class="timeline-detail">
+                    Team conditioning followed by gathering equipment and debrief.
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">5:00 PM</div>
+                <div class="timeline-title">End</div>
+                <div class="timeline-detail">
+                    Dismiss.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Evaluation Checklist -->
+    <div class="notice-card" style="margin-top: 8px;">
+        <strong>Day 4 Focus</strong>
+        Positional skill work &bull; Live pitching command &bull; Competitive at-bats &bull; Defensive positioning &bull; Game awareness
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <h3>Gig Harbor High School</h3>
+            <p>5101 Rosedale St NW<br>Gig Harbor, WA 98335</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="../schedule.html">Schedule</a></li>
+                <li><a href="../roster.html">Roster</a></li>
+                <li><a href="../practice.html">Practice Info</a></li>
+                <li><a href="../boosters.html">Booster Club</a></li>
+                <li><a href="../conduct.html">Code of Conduct</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <p>Social media links coming soon.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Gig Harbor Tides Baseball &bull; 2026 Season &bull; All times Pacific</p>
+    </div>
+</footer>
+
+</body>
+</html>

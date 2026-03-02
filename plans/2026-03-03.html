@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 Tryouts (Hitting) - Practice Plan Archive - Gig Harbor Tides Baseball</title>
+    <link rel="stylesheet" href="../css/styles.css?v=4">
+    <style>
+        .plan-date-bar {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .plan-date-bar h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin: 0;
+            border: none;
+            padding: 0;
+            color: var(--white);
+        }
+        .plan-date-bar .plan-meta {
+            font-size: 0.9rem;
+            color: var(--carolina-light);
+            text-align: right;
+        }
+        .plan-date-bar .plan-meta strong {
+            color: var(--white);
+        }
+        .group-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .group-tab {
+            padding: 10px 24px;
+            border: none;
+            background: var(--white);
+            cursor: pointer;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow);
+            transition: all 0.2s;
+        }
+        .group-tab:hover {
+            color: var(--navy);
+            background: var(--light-bg);
+        }
+        .group-tab.active {
+            background: var(--carolina);
+            color: var(--white);
+        }
+        .group-panel {
+            display: none;
+        }
+        .group-panel.active {
+            display: block;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--carolina), var(--navy));
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            background: var(--carolina);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--carolina);
+        }
+        .timeline-time {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: var(--carolina-dark);
+            margin-bottom: 4px;
+        }
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .timeline-detail {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .station-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .station-card {
+            background: var(--light-bg);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            border-top: 4px solid var(--carolina);
+        }
+        .station-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+        .station-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .station-card li {
+            padding: 4px 0 4px 18px;
+            position: relative;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .station-card li::before {
+            content: '\25B8';
+            position: absolute;
+            left: 2px;
+            color: var(--carolina);
+            font-size: 0.75rem;
+        }
+        .station-card .station-note {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: rgba(75,156,211,0.1);
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: var(--navy);
+            font-weight: 500;
+        }
+        .rotation-note {
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin: 8px 0 4px;
+        }
+        .day-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .day-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--carolina);
+            text-decoration: none;
+        }
+        .day-nav a:hover {
+            color: var(--carolina-dark);
+        }
+        .day-nav .disabled {
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+        @media (max-width: 700px) {
+            .station-grid {
+                grid-template-columns: 1fr;
+            }
+            .plan-date-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .plan-date-bar .plan-meta {
+                text-align: center;
+            }
+        }
+        @media print {
+            .group-tabs, .day-nav { display: none; }
+            .group-panel { display: block !important; page-break-inside: avoid; margin-bottom: 40px; }
+            .group-panel::before {
+                content: attr(data-label);
+                display: block;
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 1.3rem;
+                letter-spacing: 2px;
+                color: var(--navy);
+                margin-bottom: 12px;
+                border-bottom: 2px solid var(--carolina);
+                padding-bottom: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-brand">
+            <img src="../Logos/GH Logo.png" alt="Gig Harbor">
+            <span>Tides Baseball</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../schedule.html">Schedule</a></li>
+            <li><a href="../calendar.html">Calendar</a></li>
+            <li><a href="../roster.html">Roster</a></li>
+            <li><a href="../practice.html">Practice</a></li>
+            <li><a href="../practiceplan.html" class="active">Daily Plan</a></li>
+            <li><a href="../photos.html">Photos</a></li>
+            <li><a href="../boosters.html">Boosters</a></li>
+            <li><a href="../conduct.html">Conduct</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="accent-bar"></div>
+
+<div class="page-container-narrow">
+
+    <!-- Day Navigation -->
+    <div class="day-nav">
+        <a href="2026-03-02.html">&larr; Day 1</a>
+        <a href="index.html">All Plans</a>
+        <a href="2026-03-04.html">Day 3 &rarr;</a>
+    </div>
+
+    <!-- Date & Location Bar -->
+    <div class="plan-date-bar">
+        <div>
+            <h2>Day 2 &mdash; Tryouts (Hitting)</h2>
+            <span style="font-size: 0.95rem; color: var(--carolina-light);">Tuesday, March 3, 2026</span>
+        </div>
+        <div class="plan-meta">
+            <strong>Sehmel Homestead Park #1</strong><br>
+            11th/12th: 2:30 &ndash; 4:00 PM<br>
+            9th/10th: 3:30 &ndash; 5:00 PM
+        </div>
+    </div>
+
+    <!-- Group Tabs -->
+    <div class="group-tabs">
+        <button class="group-tab active" onclick="switchGroup('group1112')">11th &amp; 12th Grade</button>
+        <button class="group-tab" onclick="switchGroup('group910')">9th &amp; 10th Grade</button>
+    </div>
+
+    <!-- 11th & 12th Grade Plan -->
+    <div id="group1112" class="group-panel active" data-label="11th &amp; 12th Grade &mdash; 2:30 &ndash; 4:00 PM">
+
+        <div class="practice-card">
+            <h3>Practice Flow</h3>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-time">2:30 PM</div>
+                    <div class="timeline-title">Warm Up &amp; Overview</div>
+                    <div class="timeline-detail">
+                        Arrive and warm up on your own. Quick overview of the hitting tryout format and rotation order.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">2:40 PM</div>
+                    <div class="timeline-title">Stretch &amp; Throw</div>
+                    <div class="timeline-detail">
+                        Dynamic warm-up followed by partner throwing progression.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">2:50 PM</div>
+                    <div class="timeline-title">Station Rotations (3 Groups)</div>
+                    <div class="timeline-detail">
+                        Break into 3 even groups. Rotation order: Hitting &rarr; Shagging &rarr; Baserunning &rarr; Hitting.
+                    </div>
+
+                    <div class="station-grid">
+                        <div class="station-card">
+                            <h4>Station 1: Hitting</h4>
+                            <ul>
+                                <li><strong>Round 1 (8 pitches):</strong></li>
+                                <li style="padding-left: 32px;">2 bunts</li>
+                                <li style="padding-left: 32px;">Focus up the middle &amp; opposite field</li>
+                                <li style="padding-left: 32px;">Final swing: leg out a base hit (timed)</li>
+                                <li><strong>Round 2 (8 pitches):</strong></li>
+                                <li style="padding-left: 32px;">Swing away</li>
+                                <li style="padding-left: 32px;">Final swing: leg out a double (timed)</li>
+                                <li><strong>Round 3 (5 pitches):</strong></li>
+                                <li style="padding-left: 32px;">Simulate bases loaded, 1 out</li>
+                                <li style="padding-left: 32px;">Goal: drive in runs</li>
+                            </ul>
+                            <div class="station-note">Record home-to-1st and home-to-2nd times</div>
+                        </div>
+
+                        <div class="station-card">
+                            <h4>Station 2: Shagging</h4>
+                            <ul>
+                                <li>Field balls during live hitting</li>
+                                <li>Outfielders work on reads and routes</li>
+                                <li>Infielders work on positioning</li>
+                            </ul>
+                            <div class="station-note">Stay engaged &mdash; evaluate effort &amp; awareness</div>
+                        </div>
+
+                        <div class="station-card">
+                            <h4>Station 3: Baserunning</h4>
+                            <ul>
+                                <li><strong>Round 1:</strong> Work off 1st base</li>
+                                <li style="padding-left: 32px;">Leads, secondary leads, reads</li>
+                                <li style="padding-left: 32px;">Steal breaks &amp; jumps</li>
+                                <li><strong>Round 2:</strong> Work off 2nd base</li>
+                                <li style="padding-left: 32px;">Reads on ground balls &amp; fly balls</li>
+                                <li style="padding-left: 32px;">Tag-up situations</li>
+                            </ul>
+                            <div class="station-note">Evaluate baseball IQ &amp; aggressiveness</div>
+                        </div>
+                    </div>
+                    <p class="rotation-note">~20 minutes per station with transition time</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">3:50 PM</div>
+                    <div class="timeline-title">Wrap Up</div>
+                    <div class="timeline-detail">
+                        Gather equipment and dismiss. 9th/10th group arrives.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">4:00 PM</div>
+                    <div class="timeline-title">End</div>
+                    <div class="timeline-detail">
+                        Dismiss.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 9th & 10th Grade Plan -->
+    <div id="group910" class="group-panel" data-label="9th &amp; 10th Grade &mdash; 3:30 &ndash; 5:00 PM">
+
+        <div class="practice-card">
+            <h3>Practice Flow</h3>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-time">3:30 PM</div>
+                    <div class="timeline-title">Warm Up &amp; Overview</div>
+                    <div class="timeline-detail">
+                        Arrive and warm up on your own. Quick overview of the hitting tryout format and rotation order.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">3:40 PM</div>
+                    <div class="timeline-title">Stretch &amp; Throw</div>
+                    <div class="timeline-detail">
+                        Dynamic warm-up followed by partner throwing progression.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">3:50 PM</div>
+                    <div class="timeline-title">Station Rotations (3 Groups)</div>
+                    <div class="timeline-detail">
+                        Break into 3 even groups. Rotation order: Hitting &rarr; Shagging &rarr; Baserunning &rarr; Hitting.
+                    </div>
+
+                    <div class="station-grid">
+                        <div class="station-card">
+                            <h4>Station 1: Hitting</h4>
+                            <ul>
+                                <li><strong>Round 1 (8 pitches):</strong></li>
+                                <li style="padding-left: 32px;">2 bunts</li>
+                                <li style="padding-left: 32px;">Focus up the middle &amp; opposite field</li>
+                                <li style="padding-left: 32px;">Final swing: leg out a base hit (timed)</li>
+                                <li><strong>Round 2 (8 pitches):</strong></li>
+                                <li style="padding-left: 32px;">Swing away</li>
+                                <li style="padding-left: 32px;">Final swing: leg out a double (timed)</li>
+                                <li><strong>Round 3 (5 pitches):</strong></li>
+                                <li style="padding-left: 32px;">Simulate bases loaded, 1 out</li>
+                                <li style="padding-left: 32px;">Goal: drive in runs</li>
+                            </ul>
+                            <div class="station-note">Record home-to-1st and home-to-2nd times</div>
+                        </div>
+
+                        <div class="station-card">
+                            <h4>Station 2: Shagging</h4>
+                            <ul>
+                                <li>Field balls during live hitting</li>
+                                <li>Outfielders work on reads and routes</li>
+                                <li>Infielders work on positioning</li>
+                            </ul>
+                            <div class="station-note">Stay engaged &mdash; evaluate effort &amp; awareness</div>
+                        </div>
+
+                        <div class="station-card">
+                            <h4>Station 3: Baserunning</h4>
+                            <ul>
+                                <li><strong>Round 1:</strong> Work off 1st base</li>
+                                <li style="padding-left: 32px;">Leads, secondary leads, reads</li>
+                                <li style="padding-left: 32px;">Steal breaks &amp; jumps</li>
+                                <li><strong>Round 2:</strong> Work off 2nd base</li>
+                                <li style="padding-left: 32px;">Reads on ground balls &amp; fly balls</li>
+                                <li style="padding-left: 32px;">Tag-up situations</li>
+                            </ul>
+                            <div class="station-note">Evaluate baseball IQ &amp; aggressiveness</div>
+                        </div>
+                    </div>
+                    <p class="rotation-note">~20 minutes per station with transition time</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">4:50 PM</div>
+                    <div class="timeline-title">Wrap Up</div>
+                    <div class="timeline-detail">
+                        Gather equipment and dismiss.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">5:00 PM</div>
+                    <div class="timeline-title">End</div>
+                    <div class="timeline-detail">
+                        Dismiss.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Evaluation Checklist -->
+    <div class="notice-card" style="margin-top: 8px;">
+        <strong>Day 2 Evaluation Focus</strong>
+        Bat speed &amp; swing mechanics &bull; Bunting ability &bull; Opposite field / situational hitting &bull; Home-to-1st &amp; home-to-2nd times &bull; Baserunning IQ &amp; aggressiveness
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <h3>Gig Harbor High School</h3>
+            <p>5101 Rosedale St NW<br>Gig Harbor, WA 98335</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="../schedule.html">Schedule</a></li>
+                <li><a href="../roster.html">Roster</a></li>
+                <li><a href="../practice.html">Practice Info</a></li>
+                <li><a href="../boosters.html">Booster Club</a></li>
+                <li><a href="../conduct.html">Code of Conduct</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <p>Social media links coming soon.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Gig Harbor Tides Baseball &bull; 2026 Season &bull; All times Pacific</p>
+    </div>
+</footer>
+
+<script>
+function switchGroup(id) {
+    document.querySelectorAll('.group-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.group-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+</script>
+
+</body>
+</html>
