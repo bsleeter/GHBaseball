@@ -1288,6 +1288,73 @@ a:hover {
     font-weight: 500;
 }
 
+/* ========== DOCUMENTS ========== */
+.docs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.doc-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: var(--text);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.doc-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.doc-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.doc-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.doc-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.doc-info p {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.doc-badge {
+    flex-shrink: 0;
+    background: var(--light-bg);
+    color: var(--carolina-dark);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+@media (max-width: 480px) {
+    .doc-card { padding: 16px; gap: 14px; }
+    .doc-badge { display: none; }
+}
+
 /* ========== PRINT ========== */
 @media print {
     body { background: white; }
