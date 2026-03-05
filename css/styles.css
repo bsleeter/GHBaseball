@@ -1262,6 +1262,32 @@ a:hover {
     .tab-btn { padding: 8px 16px; font-size: 1rem; }
 }
 
+/* ========== ROSTER ========== */
+.roster-count {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.roster-table {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.roster-table td:first-child {
+    width: 50px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--carolina-dark);
+}
+
+.roster-table td:nth-child(2) {
+    font-weight: 500;
+}
+
 /* ========== PRINT ========== */
 @media print {
     body { background: white; }
