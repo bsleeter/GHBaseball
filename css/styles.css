@@ -1246,7 +1246,7 @@ a:hover {
     .opponent-cell { gap: 8px; }
     .opponent-logo { width: 30px; height: 30px; }
     .location-cell { display: none; }
-    .schedule-table thead th:last-child { display: none; }
+    .schedule-table:not(.roster-table) thead th:last-child { display: none; }
 
     .page-header h1 { font-size: 2rem; }
 
@@ -1273,7 +1273,7 @@ a:hover {
 }
 
 .roster-table {
-    max-width: 500px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
