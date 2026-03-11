@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Practice Plan - Gig Harbor Tides Baseball</title>
-    <link rel="stylesheet" href="css/styles.css?v=5">
+    <title>Day 7 Practice - Practice Plan Archive - Gig Harbor Tides Baseball</title>
+    <link rel="stylesheet" href="../css/styles.css?v=5">
     <style>
         .plan-date-bar {
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
@@ -34,38 +34,6 @@
         }
         .plan-date-bar .plan-meta strong {
             color: var(--white);
-        }
-        .group-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .group-tab {
-            padding: 10px 24px;
-            border: none;
-            background: var(--white);
-            cursor: pointer;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            border-radius: var(--radius-sm);
-            box-shadow: var(--shadow);
-            transition: all 0.2s;
-        }
-        .group-tab:hover {
-            color: var(--navy);
-            background: var(--light-bg);
-        }
-        .group-tab.active {
-            background: var(--carolina);
-            color: var(--white);
-        }
-        .group-panel {
-            display: none;
-        }
-        .group-panel.active {
-            display: block;
         }
         .timeline {
             position: relative;
@@ -162,30 +130,6 @@
             color: var(--navy);
             font-weight: 500;
         }
-        .rotation-note {
-            text-align: center;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            font-style: italic;
-            margin: 8px 0 4px;
-        }
-        @media (max-width: 900px) {
-            .station-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-        }
-        @media (max-width: 700px) {
-            .station-grid {
-                grid-template-columns: 1fr !important;
-            }
-            .plan-date-bar {
-                flex-direction: column;
-                text-align: center;
-            }
-            .plan-date-bar .plan-meta {
-                text-align: center;
-            }
-        }
         .day-nav {
             display: flex;
             justify-content: space-between;
@@ -208,20 +152,25 @@
             color: var(--text-muted);
             pointer-events: none;
         }
-        @media print {
-            .group-tabs, .day-nav { display: none; }
-            .group-panel { display: block !important; page-break-inside: avoid; margin-bottom: 40px; }
-            .group-panel::before {
-                content: attr(data-label);
-                display: block;
-                font-family: 'Bebas Neue', sans-serif;
-                font-size: 1.3rem;
-                letter-spacing: 2px;
-                color: var(--navy);
-                margin-bottom: 12px;
-                border-bottom: 2px solid var(--carolina);
-                padding-bottom: 6px;
+        @media (max-width: 900px) {
+            .station-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
             }
+        }
+        @media (max-width: 700px) {
+            .station-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .plan-date-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .plan-date-bar .plan-meta {
+                text-align: center;
+            }
+        }
+        @media print {
+            .day-nav { display: none; }
         }
     </style>
 </head>
@@ -230,39 +179,35 @@
 <!-- Navigation -->
 <nav class="site-nav">
     <div class="nav-inner">
-        <a href="index.html" class="nav-brand">
-            <img src="Logos/GH Logo.png" alt="Gig Harbor">
+        <a href="../index.html" class="nav-brand">
+            <img src="../Logos/GH Logo.png" alt="Gig Harbor">
             <span>Tides Baseball</span>
         </a>
         <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="schedule.html">Schedule</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="roster.html">Roster</a></li>
-            <li><a href="practice.html">Practice</a></li>
-            <li><a href="practiceplan.html" class="active">Daily Plan</a></li>
-            <li><a href="photos.html">Photos</a></li>
-            <li><a href="boosters.html">Boosters</a></li>
-            <li><a href="conduct.html">Conduct</a></li>
-            <li><a href="docs.html">Documents</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../schedule.html">Schedule</a></li>
+            <li><a href="../calendar.html">Calendar</a></li>
+            <li><a href="../roster.html">Roster</a></li>
+            <li><a href="../practice.html">Practice</a></li>
+            <li><a href="../practiceplan.html" class="active">Daily Plan</a></li>
+            <li><a href="../photos.html">Photos</a></li>
+            <li><a href="../boosters.html">Boosters</a></li>
+            <li><a href="../conduct.html">Conduct</a></li>
+            <li><a href="../docs.html">Documents</a></li>
         </ul>
     </div>
 </nav>
 <div class="accent-bar"></div>
 
 <div class="page-container-narrow">
-    <div class="page-header">
-        <h1>Daily Practice Plan</h1>
-        <p>Updated daily throughout the 2026 season</p>
-    </div>
 
     <!-- Day Navigation -->
     <div class="day-nav">
-        <a href="plans/2026-03-09.html">&larr; Previous Day</a>
-        <a href="plans/index.html">View Past Plans</a>
+        <a href="2026-03-09.html">&larr; Day 6</a>
+        <a href="index.html">All Plans</a>
         <span class="disabled">Next Day &rarr;</span>
     </div>
 
@@ -420,11 +365,11 @@
         <div class="footer-col">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li><a href="roster.html">Roster</a></li>
-                <li><a href="practice.html">Practice Info</a></li>
-                <li><a href="boosters.html">Booster Club</a></li>
-                <li><a href="conduct.html">Code of Conduct</a></li>
+                <li><a href="../schedule.html">Schedule</a></li>
+                <li><a href="../roster.html">Roster</a></li>
+                <li><a href="../practice.html">Practice Info</a></li>
+                <li><a href="../boosters.html">Booster Club</a></li>
+                <li><a href="../conduct.html">Code of Conduct</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -436,55 +381,6 @@
         <p>Gig Harbor Tides Baseball &bull; 2026 Season &bull; All times Pacific</p>
     </div>
 </footer>
-
-<script>
-function switchGroup(id) {
-    document.querySelectorAll('.group-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.group-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    event.currentTarget.classList.add('active');
-}
-
-// Date-based plan routing
-// This page shows the plan for this date:
-var THIS_PAGE_DATE = '2026-03-10';
-
-// All available plan dates (sorted chronologically)
-var PLAN_DATES = [
-    '2026-03-02',
-    '2026-03-03',
-    '2026-03-04',
-    '2026-03-05',
-    '2026-03-06',
-    '2026-03-09',
-    '2026-03-10'
-];
-
-(function() {
-    var now = new Date();
-    var today = now.getFullYear() + '-' +
-        String(now.getMonth() + 1).padStart(2, '0') + '-' +
-        String(now.getDate()).padStart(2, '0');
-
-    // If today matches this page, we're good
-    if (today === THIS_PAGE_DATE) return;
-
-    // Find the best plan: today's plan, or the most recent past plan
-    var target = null;
-    for (var i = PLAN_DATES.length - 1; i >= 0; i--) {
-        if (PLAN_DATES[i] <= today) {
-            target = PLAN_DATES[i];
-            break;
-        }
-    }
-
-    // If no past plan found, or the best match is this page, stay here
-    if (!target || target === THIS_PAGE_DATE) return;
-
-    // Redirect to the archived plan for that date
-    window.location.replace('plans/' + target + '.html');
-})();
-</script>
 
 </body>
 </html>
