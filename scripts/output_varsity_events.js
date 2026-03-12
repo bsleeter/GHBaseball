@@ -7,7 +7,7 @@
 {title:'Practice',start:'2026-03-09T14:30:00',end:'2026-03-09T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
 {title:'Practice',start:'2026-03-10T18:30:00',end:'2026-03-10T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
 {title:'@ Rogers',start:'2026-03-16T19:00:00',end:'2026-03-16T21:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Rogers HS'}},
-{title:'@ Puyallup',start:'2026-03-12T19:00:00',end:'2026-03-12T21:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Rogers HS'}},
+{title:'Practice',start:'2026-03-12T14:30:00',end:'2026-03-12T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #2'}},
 {title:'Practice',start:'2026-03-13T14:30:00',end:'2026-03-13T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
 {title:'vs Kelso',start:'2026-03-14T12:00:00',end:'2026-03-14T14:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
 {title:'@ River Ridge',start:'2026-03-17T16:30:00',end:'2026-03-17T19:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'River Ridge HS'}},
