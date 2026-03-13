@@ -867,6 +867,17 @@ a:hover {
     color: var(--event-purple-text);
 }
 
+.badge-cancelled {
+    background: #FFCDD2;
+    color: #C62828;
+}
+
+tr.cancelled-row {
+    opacity: 0.55;
+    text-decoration: line-through;
+    text-decoration-color: #C62828;
+}
+
 /* ========== LEGEND ========== */
 .legend {
     display: flex;
