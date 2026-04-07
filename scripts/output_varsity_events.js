@@ -45,7 +45,7 @@
 {title:'vs Peninsula',start:'2026-04-28T16:00:00',end:'2026-04-28T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
 {title:'vs Capital',start:'2026-04-29T16:00:00',end:'2026-04-29T18:30:00',backgroundColor:'#E8F5E9',borderColor:'#2E7D32',textColor:'#2E7D32',extendedProps:{type:'Home Game',location:'Sehmel #1'}},
 {title:'Practice',start:'2026-04-30T14:30:00',end:'2026-04-30T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
-{title:'Practice',start:'2026-05-01T18:30:00',end:'2026-05-01T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
+{title:'@ Puyallup',start:'2026-05-01T19:00:00',end:'2026-05-01T21:30:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Rogers HS'}},
 {title:'@ Timberline',start:'2026-05-04T16:30:00',end:'2026-05-04T19:00:00',backgroundColor:'#BBDEFB',borderColor:'#1565C0',textColor:'#1565C0',extendedProps:{type:'Away Game',location:'Timberline HS'}},
 {title:'Practice',start:'2026-05-06T14:30:00',end:'2026-05-06T17:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Sehmel #1'}},
 {title:'Practice',start:'2026-05-07T18:30:00',end:'2026-05-07T21:00:00',backgroundColor:'#E3F2FD',borderColor:'#90CAF9',textColor:'#1565C0',extendedProps:{type:'Practice',location:'Upper Turf'}},
