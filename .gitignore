@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Office temp files
+~$*
+
+# Claude session state
+.claude/
+
+# Historical archive — keep stats xlsx + build scripts, exclude source photos
+# (photos live locally; they're the verification source but bulk up the repo).
+Historical/**/*.jpeg
+Historical/**/*.jpg
+Historical/**/*.JPG
+Historical/**/*.JPEG
+Historical/**/*.png
+Historical/**/*.PNG
+Historical/**/*.heic
+Historical/**/*.HEIC

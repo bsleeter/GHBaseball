@@ -1,0 +1,59 @@
+{
+  "_comment": "Per-year team metadata. Head coach, league, championships. Assistant coaches and records extracted from xlsx automatically. Each year may also include 'record': {W, L} to override the team-pitching-derived W-L (useful when GameChanger pitching W-L doesn't sum to the actual team result), and 'highlights': [{highlight, value, context?}, ...] to append entries to the season's Team Highlights list (used for years built from CSVs that lack a highlights sheet).",
+  "_bbcorEraStart": 2012,
+  "_headCoachEras": [
+    {"coach": "Pete Jansen",  "from": 1990, "to": 2022},
+    {"coach": "Shane Hannon", "from": 2023, "to": 2024},
+    {"coach": "Ben Sleeter",  "from": 2025, "to": null}
+  ],
+  "1990": {"league": "Narrows League"},
+  "1991": {"league": "Narrows League"},
+  "1992": {"league": "Pierce County League"},
+  "1993": {"league": "Narrows League"},
+  "1994": {"league": "Narrows League"},
+  "1995": {"league": "Narrows League"},
+  "1996": {"league": "Narrows League"},
+  "1997": {"league": "Narrows League", "leagueChamp": true, "districtChamp": true, "stateChamp": true},
+  "1998": {"league": "Narrows League"},
+  "1999": {"league": "Narrows League"},
+  "2000": {"league": "Narrows League"},
+  "2001": {"league": "Narrows League"},
+  "2002": {"league": "Narrows League"},
+  "2003": {"league": "Narrows League"},
+  "2004": {"league": "Narrows League"},
+  "2005": {"league": "Narrows League"},
+  "2006": {"league": "Narrows League", "leagueChamp": true},
+  "2007": {"league": "Narrows League"},
+  "2008": {"league": "Narrows League"},
+  "2009": {"league": "Narrows League"},
+  "2010": {"league": "Narrows League", "leagueChamp": true},
+  "2011": {"league": "Narrows League"},
+  "2012": {"league": "Narrows League"},
+  "2013": {"league": "South Sound Conference"},
+  "2014": {"league": "South Sound Conference"},
+  "2015": {"league": "South Sound Conference", "statePlace": 3},
+  "2016": {"league": "South Sound Conference", "leagueChamp": true},
+  "2017": {"league": "South Sound Conference", "leagueChamp": true, "districtChamp": true, "stateChamp": true},
+  "2018": {"league": "South Sound Conference", "leagueChamp": true},
+  "2019": {"league": "South Sound Conference", "leagueChamp": true, "districtChamp": true, "statePlace": 3},
+  "2021": {"league": "3A SSC", "leagueChamp": true, "_note": "data not in archive"},
+  "2023": {"league": "3A SSC"},
+  "2024": {"league": "3A SSC"},
+  "2025": {
+    "league": "3A SSC",
+    "leagueChamp": true,
+    "statePlace": 3,
+    "record": {"W": 25, "L": 3},
+    "highlights": [
+      {"highlight": "Longest Winning Streak", "value": 16},
+      {"highlight": "Longest Losing Streak", "value": 1}
+    ]
+  },
+  "2026": {
+    "league": "3A SSC",
+    "highlights": [
+      {"highlight": "Most Runs (Game)", "value": 27, "context": "vs. Mt. Tahoma (27-1)"},
+      {"highlight": "Widest Margin of Victory", "value": 26, "context": "vs. Mt. Tahoma (27-1)"}
+    ]
+  }
+}
