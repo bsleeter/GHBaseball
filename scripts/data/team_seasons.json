@@ -146,7 +146,7 @@
     ]
   },
   "2025": {
-    "league": "3A SSC",
+    "league": "Puget Sound League · Narrows Division",
     "leagueChamp": true,
     "statePlace": 3,
     "record": {"W": 25, "L": 3},
@@ -207,7 +207,7 @@
     ]
   },
   "2026": {
-    "league": "3A SSC",
+    "league": "Puget Sound League · Narrows Division",
     "highlights": [
       {"highlight": "Most Runs (Game)", "value": 27, "context": "vs. Mt. Tahoma (27-1)"},
       {"highlight": "Widest Margin of Victory", "value": 26, "context": "vs. Mt. Tahoma (27-1)"}
