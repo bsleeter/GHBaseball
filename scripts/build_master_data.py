@@ -311,6 +311,15 @@ def extract_pitching(wb) -> tuple[list[dict], dict | None]:
     return [shape(r) for r in rows], (shape(team) if team else None)
 
 
+def _has_score_field(rec: dict) -> bool:
+    """Whether a parsed schedule row has any score/result data on it.
+    Used to distinguish section-header rows (no score) from real games
+    that just happen to have unscored future games."""
+    return any(
+        rec.get(k) for k in ("score", "result_gh_opp", "w_l", "r")
+    )
+
+
 def extract_schedule(wb) -> list[dict]:
     if "Schedule" not in wb.sheetnames:
         return []
@@ -336,10 +345,39 @@ def extract_schedule(wb) -> list[dict]:
         for h, v in zip(headers, r):
             if v is None or v == "":
                 continue
-            key = h.lower().replace("/", "_").replace(" ", "_") or "col"
+            # Normalize header to a snake-case key: collapse any non-alphanumeric
+            # run into a single underscore. "Result (GH-Opp)" → "result_gh_opp".
+            key = re.sub(r"[^a-z0-9]+", "_", h.lower()).strip("_") or "col"
             rec[key] = v
-        if rec.get("opponent"):
-            out.append(rec)
+        if not rec.get("opponent"):
+            continue
+        # Skip section-header rows that some xlsx files insert (e.g. a
+        # "WA 3A State Tournament" divider row between regular and postseason
+        # games). They have no score and the opponent text is a section
+        # title, not a team name.
+        opp_lower = str(rec["opponent"]).lower()
+        is_section = (
+            ("tournament" in opp_lower and not _has_score_field(rec))
+            or opp_lower in {"season record", "regular season", "playoffs", "postseason"}
+        )
+        if is_section:
+            continue
+        # Years with the simple "Result (GH-Opp)" column have a single string
+        # like "9-1" or "0-2 (9 inn)". Parse leading score into score + w_l so
+        # the year page can render the same rich Date/Loc/Opp/W-L/Score
+        # format used for current seasons. Trailing notes ("(9 inn)") become
+        # the notes field.
+        if "result_gh_opp" in rec and "w_l" not in rec:
+            raw = str(rec["result_gh_opp"]).strip()
+            m = re.match(r"\s*(\d+)\s*-\s*(\d+)\b\s*(.*)$", raw)
+            if m:
+                us, them, trailing = int(m.group(1)), int(m.group(2)), m.group(3).strip()
+                rec["score"] = f"{us}-{them}"
+                rec["w_l"] = "W" if us > them else "L" if us < them else "T"
+                if trailing and "notes" not in rec:
+                    # Strip surrounding parens for cleaner display
+                    rec["notes"] = re.sub(r"^\(|\)$", "", trailing).strip()
+        out.append(rec)
     return out
 
 
