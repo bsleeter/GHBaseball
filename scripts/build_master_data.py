@@ -633,6 +633,30 @@ def main() -> None:
                         "context": str(h.get("context", "")).strip(),
                     })
 
+        # Apply meta-supplied grade overrides (useful for GameChanger years
+        # whose synthesized roster has no grade field).
+        meta_grades = meta.get("rosterGrades")
+        if isinstance(meta_grades, dict):
+            grade_lookup = {k.strip().lower(): v for k, v in meta_grades.items()}
+            for entry in roster:
+                if entry.get("grade") is None:
+                    g = grade_lookup.get(entry["player"].strip().lower())
+                    if isinstance(g, int):
+                        entry["grade"] = g
+
+        # Append meta-supplied schedule entries (for years built from
+        # GameChanger CSVs that lack a schedule sheet).
+        meta_schedule = meta.get("schedule")
+        if isinstance(meta_schedule, list):
+            for g in meta_schedule:
+                if isinstance(g, dict) and g.get("opponent"):
+                    schedule.append({
+                        k: g[k]
+                        for k in ("date", "loc", "opponent", "w_l", "score",
+                                  "result_gh_opp", "r", "h", "e", "notes")
+                        if k in g
+                    })
+
         seasons[str(year)] = {
             "year": year,
             "era": "bbcor" if year >= BBCOR_ERA_START else "pre-bbcor",
