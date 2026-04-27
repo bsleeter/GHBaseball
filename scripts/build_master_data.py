@@ -410,6 +410,78 @@ def extract_individual_records(wb) -> list[dict]:
     return out
 
 
+def backfill_sb_from_records(
+    batting: list[dict],
+    records: list[dict],
+    resolver: "PlayerResolver",
+    year: int,
+    roster: list[dict],
+) -> int:
+    """Some pre-2012 batting sheets omit the SB column, but the season's
+    SB leader still appears on the Individual Records sheet (e.g. 2010:
+    'Most Stolen Bases — Spencer Manjarrez 26'). When that's the case,
+    attribute the typed value to the leader's batting line so career and
+    season leaderboards include it.
+
+    Skips years whose batting sheet already carries non-zero SB data.
+    Returns the number of players credited (0 if no backfill needed).
+    """
+    # If the batting sheet supplied SB data, leave it alone.
+    if any((line.get("SB") or 0) for line in batting):
+        return 0
+
+    # Find the SB row on the records sheet.
+    sb_rec = None
+    for r in records:
+        stat = (r.get("stat") or "").strip().lower()
+        if stat in ("most stolen bases", "most sb", "stolen bases"):
+            sb_rec = r
+            break
+    if not sb_rec:
+        return 0
+
+    val = parse_num(sb_rec.get("value"))
+    if val is None or val <= 0:
+        return 0
+    sb_val = int(val)
+
+    holder_raw = (sb_rec.get("holder") or "").strip()
+    if not holder_raw:
+        return 0
+
+    # Split tied holders. Source uses commas; tolerate ' & ' / ' and '.
+    parts = re.split(r"\s*(?:,|&|\band\b)\s*", holder_raw, flags=re.IGNORECASE)
+    holders = [p.strip() for p in parts if p.strip()]
+    if not holders:
+        return 0
+
+    # Resolve each holder to a playerId, then locate the matching batting line.
+    credited = 0
+    for h in holders:
+        pid = resolver.resolve(h, year, roster)
+        match = next((l for l in batting if l.get("playerId") == pid), None)
+        if match is None:
+            # Last-name fallback in case the holder is "Spencer Manjarrez"
+            # but the batting sheet uses just "Manjarrez" and the resolver
+            # picked a different slug.
+            last = h.split()[-1].lower()
+            match = next(
+                (l for l in batting
+                 if (l.get("player") or "").split()[-1].lower() == last),
+                None,
+            )
+        if match is None:
+            print(f"  [sb-backfill] {year}: could not match '{h}' for SB={sb_val}")
+            continue
+        match["SB"] = sb_val
+        credited += 1
+    if credited:
+        names = ", ".join(holders)
+        print(f"  [sb-backfill] {year}: credited {credited} player(s) "
+              f"with SB={sb_val} ({names})")
+    return credited
+
+
 def extract_highlights(wb) -> list[dict]:
     sheet = None
     for n in wb.sheetnames:
@@ -627,6 +699,11 @@ def main() -> None:
             line["playerId"] = resolver.resolve(line["player"], year, roster)
         for entry in roster:
             entry["playerId"] = resolver.resolve(entry["player"], year, roster)
+
+        # Some seasons (e.g. 1997-2004, 2006-2011) have no SB column on the
+        # Team Batting sheet but expose the season leader on the Individual
+        # Records sheet. Credit the leader so career/season SB rankings work.
+        backfill_sb_from_records(batting, records, resolver, year, roster)
 
         # Update player registry — display name picks the most "complete" form seen
         # (longer string with a space wins over short 'Last' or 'Last, F')
