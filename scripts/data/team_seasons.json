@@ -2,44 +2,357 @@
   "_comment": "Per-year team metadata. Head coach, league, championships. Assistant coaches and records extracted from xlsx automatically. Each year may also include 'record': {W, L} to override the team-pitching-derived W-L (useful when GameChanger pitching W-L doesn't sum to the actual team result), and 'highlights': [{highlight, value, context?}, ...] to append entries to the season's Team Highlights list (used for years built from CSVs that lack a highlights sheet).",
   "_bbcorEraStart": 2012,
   "_headCoachEras": [
-    {"coach": "Pete Jansen",  "from": 1990, "to": 2022},
-    {"coach": "Shane Hannon", "from": 2023, "to": 2024},
-    {"coach": "Ben Sleeter",  "from": 2025, "to": null}
+    {
+      "coach": "Pete Jansen",
+      "from": 1990,
+      "to": 2022
+    },
+    {
+      "coach": "Shane Hannon",
+      "from": 2023,
+      "to": 2024
+    },
+    {
+      "coach": "Ben Sleeter",
+      "from": 2025,
+      "to": null
+    }
   ],
-  "1990": {"league": "Narrows League"},
-  "1991": {"league": "Narrows League"},
-  "1992": {"league": "Pierce County League"},
-  "1993": {"league": "Narrows League"},
-  "1994": {"league": "Narrows League"},
-  "1995": {"league": "Narrows League"},
-  "1996": {"league": "Narrows League"},
-  "1997": {"league": "Narrows League", "leagueChamp": true, "districtChamp": true, "stateChamp": true},
-  "1998": {"league": "Narrows League"},
-  "1999": {"league": "Narrows League"},
-  "2000": {"league": "Narrows League"},
-  "2001": {"league": "Narrows League"},
-  "2002": {"league": "Narrows League"},
-  "2003": {"league": "Narrows League"},
-  "2004": {"league": "Narrows League"},
-  "2005": {"league": "Narrows League"},
-  "2006": {"league": "Narrows League", "leagueChamp": true},
-  "2007": {"league": "Narrows League"},
-  "2008": {"league": "Narrows League"},
-  "2009": {"league": "Narrows League"},
-  "2010": {"league": "Narrows League", "leagueChamp": true},
-  "2011": {"league": "Narrows League"},
-  "2012": {"league": "Narrows League"},
-  "2013": {"league": "South Sound Conference"},
-  "2014": {"league": "South Sound Conference"},
-  "2015": {"league": "South Sound Conference", "statePlace": 3},
-  "2016": {"league": "South Sound Conference", "leagueChamp": true},
-  "2017": {"league": "South Sound Conference", "leagueChamp": true, "districtChamp": true, "stateChamp": true},
-  "2018": {"league": "South Sound Conference", "leagueChamp": true},
-  "2019": {"league": "South Sound Conference", "leagueChamp": true, "districtChamp": true, "statePlace": 3},
-  "2021": {"league": "3A SSC", "leagueChamp": true, "_note": "data not in archive"},
+  "1990": {
+    "league": "Narrows League"
+  },
+  "1991": {
+    "league": "Narrows League"
+  },
+  "1992": {
+    "league": "Pierce County League"
+  },
+  "1993": {
+    "league": "Narrows League"
+  },
+  "1994": {
+    "league": "Narrows League"
+  },
+  "1995": {
+    "league": "Narrows League"
+  },
+  "1996": {
+    "league": "Narrows League"
+  },
+  "1997": {
+    "league": "Narrows League",
+    "leagueChamp": true,
+    "districtChamp": true,
+    "stateChamp": true
+  },
+  "1998": {
+    "league": "Narrows League"
+  },
+  "1999": {
+    "league": "Narrows League"
+  },
+  "2000": {
+    "league": "Narrows League"
+  },
+  "2001": {
+    "league": "Narrows League"
+  },
+  "2002": {
+    "league": "Narrows League"
+  },
+  "2003": {
+    "league": "Narrows League"
+  },
+  "2004": {
+    "league": "Narrows League"
+  },
+  "2005": {
+    "league": "Narrows League"
+  },
+  "2006": {
+    "league": "Narrows League",
+    "leagueChamp": true
+  },
+  "2007": {
+    "league": "Narrows League"
+  },
+  "2008": {
+    "league": "Narrows League"
+  },
+  "2009": {
+    "league": "Narrows League"
+  },
+  "2010": {
+    "league": "Narrows League",
+    "leagueChamp": true
+  },
+  "2011": {
+    "league": "Narrows League"
+  },
+  "2012": {
+    "league": "Narrows League"
+  },
+  "2013": {
+    "league": "South Sound Conference"
+  },
+  "2014": {
+    "league": "South Sound Conference"
+  },
+  "2015": {
+    "league": "South Sound Conference",
+    "statePlace": 3
+  },
+  "2016": {
+    "league": "South Sound Conference",
+    "leagueChamp": true
+  },
+  "2017": {
+    "league": "South Sound Conference",
+    "leagueChamp": true,
+    "districtChamp": true,
+    "stateChamp": true
+  },
+  "2018": {
+    "league": "South Sound Conference",
+    "leagueChamp": true
+  },
+  "2019": {
+    "league": "South Sound Conference",
+    "leagueChamp": true,
+    "districtChamp": true,
+    "statePlace": 3
+  },
+  "2021": {
+    "league": "3A SSC",
+    "leagueChamp": true,
+    "record": {
+      "W": 8,
+      "L": 2
+    },
+    "schedule": [
+      {
+        "opponent": "Peninsula",
+        "w_l": "W",
+        "score": "2-1"
+      },
+      {
+        "opponent": "Curtis",
+        "w_l": "W",
+        "score": "4-1"
+      },
+      {
+        "opponent": "South Kitsap",
+        "w_l": "L",
+        "score": "3-7"
+      },
+      {
+        "opponent": "Sumner",
+        "w_l": "L",
+        "score": "3-10"
+      },
+      {
+        "opponent": "Bellarmine",
+        "w_l": "W",
+        "score": "9-2"
+      },
+      {
+        "opponent": "Peninsula",
+        "w_l": "W",
+        "score": "7-5"
+      },
+      {
+        "opponent": "Bellarmine",
+        "w_l": "W",
+        "score": "10-1"
+      },
+      {
+        "opponent": "Curtis",
+        "w_l": "W",
+        "score": "14-0"
+      },
+      {
+        "opponent": "Sumner",
+        "w_l": "W",
+        "score": "4-3"
+      },
+      {
+        "opponent": "Peninsula",
+        "w_l": "W",
+        "score": "3-1"
+      }
+    ]
+  },
+  "2022": {
+    "league": "3A SSC",
+    "record": {
+      "W": 13,
+      "L": 13
+    },
+    "rosterGrades": {
+      "Chase Pringle": 11,
+      "Brady Altman": 11,
+      "JD Dunham": 10,
+      "Wriley Schreiner": 11,
+      "Jack McLellan": 12,
+      "Trevor Hellwich": 12,
+      "Cutter Peterson": 10,
+      "Kaden Marler": 11,
+      "Garrick Cosmos": 11,
+      "Justin Holum": 12,
+      "Luke Miller": 12,
+      "Sam Haddon": 11,
+      "Alex Vela": 11,
+      "Sam Barber": 11,
+      "Nolan Howard": 12,
+      "Ryland Heckman": 10,
+      "Drew Hento": 12,
+      "Ryan Vorpahl": 11,
+      "Brendan Masini": 11,
+      "Will Payne": 12
+    },
+    "schedule": [
+      {
+        "opponent": "North Thurston",
+        "w_l": "W",
+        "score": "7-5",
+        "notes": "Timberline Tournament"
+      },
+      {
+        "opponent": "North Thurston",
+        "w_l": "L",
+        "score": "5-8",
+        "notes": "Timberline Tournament"
+      },
+      {
+        "opponent": "River Ridge",
+        "w_l": "L",
+        "score": "3-4",
+        "notes": "Yelm Tournament"
+      },
+      {
+        "opponent": "River Ridge",
+        "w_l": "W",
+        "score": "8-2",
+        "notes": "Yelm Tournament"
+      },
+      {
+        "opponent": "Yelm",
+        "w_l": "W",
+        "score": "10-2"
+      },
+      {
+        "opponent": "Yelm",
+        "w_l": "L",
+        "score": "1-2"
+      },
+      {
+        "opponent": "Timberline",
+        "w_l": "W",
+        "score": "7-6"
+      },
+      {
+        "opponent": "Bonney Lake",
+        "w_l": "L",
+        "score": "1-8"
+      },
+      {
+        "opponent": "North Thurston",
+        "w_l": "W",
+        "score": "3-2"
+      },
+      {
+        "opponent": "Timberline",
+        "w_l": "W",
+        "score": "9-3"
+      },
+      {
+        "opponent": "Capital",
+        "w_l": "W",
+        "score": "10-4"
+      },
+      {
+        "opponent": "Capital",
+        "w_l": "L",
+        "score": "5-15"
+      },
+      {
+        "opponent": "Central Kitsap",
+        "w_l": "L",
+        "score": "2-3"
+      },
+      {
+        "opponent": "Central Kitsap",
+        "w_l": "W",
+        "score": "23-8"
+      },
+      {
+        "opponent": "Peninsula",
+        "w_l": "W",
+        "score": "8-6"
+      },
+      {
+        "opponent": "Peninsula",
+        "w_l": "L",
+        "score": "4-11"
+      },
+      {
+        "opponent": "Auburn Riverside",
+        "w_l": "W",
+        "score": "11-1"
+      },
+      {
+        "opponent": "Rogers",
+        "w_l": "L",
+        "score": "5-15"
+      },
+      {
+        "opponent": "Curtis",
+        "w_l": "W",
+        "score": "12-2"
+      },
+      {
+        "opponent": "West Seattle",
+        "w_l": "L",
+        "score": "4-5"
+      },
+      {
+        "opponent": "Silas",
+        "w_l": "W",
+        "score": "10-6"
+      },
+      {
+        "opponent": "Port Angeles",
+        "w_l": "W",
+        "score": "6-4"
+      },
+      {
+        "opponent": "North Kitsap",
+        "w_l": "L",
+        "score": "3-4"
+      },
+      {
+        "opponent": "Olympia",
+        "w_l": "L",
+        "score": "4-8"
+      },
+      {
+        "opponent": "Auburn",
+        "w_l": "L",
+        "score": "4-7"
+      },
+      {
+        "opponent": "Edmonds-Woodway",
+        "w_l": "L",
+        "score": "1-2"
+      }
+    ]
+  },
   "2023": {
     "league": "3A SSC",
-    "record": {"W": 10, "L": 14},
+    "record": {
+      "W": 10,
+      "L": 14
+    },
     "rosterGrades": {
       "Chase Pringle": 12,
       "Brady Altman": 12,
@@ -65,35 +378,191 @@
       "Hunter Payne": 9
     },
     "schedule": [
-      {"date": "Mar 11, 2023", "loc": "Neutral", "opponent": "Richland", "w_l": "L", "score": "0-7", "notes": "Tri-City Tournament"},
-      {"date": "Mar 11, 2023", "loc": "Neutral", "opponent": "Sumner", "w_l": "L", "score": "4-6", "notes": "Tri-City Tournament"},
-      {"date": "Mar 21, 2023", "loc": "Away",    "opponent": "Yelm", "w_l": "W", "score": "13-2"},
-      {"date": "Mar 22, 2023", "loc": "Home",    "opponent": "Yelm", "w_l": "W", "score": "10-0"},
-      {"date": "Mar 28, 2023", "loc": "Home",    "opponent": "River Ridge", "w_l": "W", "score": "5-1"},
-      {"date": "Mar 29, 2023", "loc": "Away",    "opponent": "River Ridge", "w_l": "L", "score": "1-3"},
-      {"date": "Apr 3, 2023",  "loc": "Home",    "opponent": "Central Kitsap", "w_l": "W", "score": "4-3"},
-      {"date": "Apr 4, 2023",  "loc": "Away",    "opponent": "Central Kitsap", "w_l": "W", "score": "7-3"},
-      {"date": "Apr 8, 2023",  "loc": "Neutral", "opponent": "Prairie", "w_l": "L", "score": "12-16", "notes": "Non-league · at Central Kitsap HS"},
-      {"date": "Apr 11, 2023", "loc": "Home",    "opponent": "Timberline", "w_l": "W", "score": "10-5"},
-      {"date": "Apr 14, 2023", "loc": "Away",    "opponent": "Timberline", "w_l": "L", "score": "1-6"},
-      {"date": "Apr 18, 2023", "loc": "Home",    "opponent": "Capital", "w_l": "W", "score": "20-3"},
-      {"date": "Apr 22, 2023", "loc": "Neutral", "opponent": "Capital", "w_l": "L", "score": "3-4", "notes": "at Regional Athletic Complex"},
-      {"date": "Apr 25, 2023", "loc": "Away",    "opponent": "North Thurston", "w_l": "W", "score": "8-0"},
-      {"date": "Apr 26, 2023", "loc": "Home",    "opponent": "North Thurston", "w_l": "L", "score": "6-12"},
-      {"date": "Apr 27, 2023", "loc": "Neutral", "opponent": "Bainbridge", "w_l": "L", "score": "3-4", "notes": "at Cheney Stadium"},
-      {"date": "May 2, 2023",  "loc": "Away",    "opponent": "Peninsula", "w_l": "W", "score": "11-2"},
-      {"date": "May 3, 2023",  "loc": "Home",    "opponent": "Peninsula", "w_l": "L", "score": "0-1"},
-      {"date": "May 4, 2023",  "loc": "Away",    "opponent": "Rogers", "w_l": "L", "score": "5-15"},
-      {"date": "May 5, 2023",  "loc": "Home",    "opponent": "South Kitsap", "w_l": "L", "score": "7-13"},
-      {"date": "May 9, 2023",  "loc": "Away",    "opponent": "Prairie", "w_l": "W", "score": "12-4", "notes": "District Tournament — 1st Round"},
-      {"date": "May 13, 2023", "loc": "Neutral", "opponent": "Timberline", "w_l": "L", "score": "7-8", "notes": "District Tournament"},
-      {"date": "May 13, 2023", "loc": "Neutral", "opponent": "Silas", "w_l": "L", "score": "3-4", "notes": "District Tournament"},
-      {"date": "May 16, 2023", "loc": "Neutral", "opponent": "Stadium", "w_l": "L", "score": "4-7", "notes": "State Tournament — 1st Round"}
+      {
+        "date": "Mar 11, 2023",
+        "loc": "Neutral",
+        "opponent": "Richland",
+        "w_l": "L",
+        "score": "0-7",
+        "notes": "Tri-City Tournament"
+      },
+      {
+        "date": "Mar 11, 2023",
+        "loc": "Neutral",
+        "opponent": "Sumner",
+        "w_l": "L",
+        "score": "4-6",
+        "notes": "Tri-City Tournament"
+      },
+      {
+        "date": "Mar 21, 2023",
+        "loc": "Away",
+        "opponent": "Yelm",
+        "w_l": "W",
+        "score": "13-2"
+      },
+      {
+        "date": "Mar 22, 2023",
+        "loc": "Home",
+        "opponent": "Yelm",
+        "w_l": "W",
+        "score": "10-0"
+      },
+      {
+        "date": "Mar 28, 2023",
+        "loc": "Home",
+        "opponent": "River Ridge",
+        "w_l": "W",
+        "score": "5-1"
+      },
+      {
+        "date": "Mar 29, 2023",
+        "loc": "Away",
+        "opponent": "River Ridge",
+        "w_l": "L",
+        "score": "1-3"
+      },
+      {
+        "date": "Apr 3, 2023",
+        "loc": "Home",
+        "opponent": "Central Kitsap",
+        "w_l": "W",
+        "score": "4-3"
+      },
+      {
+        "date": "Apr 4, 2023",
+        "loc": "Away",
+        "opponent": "Central Kitsap",
+        "w_l": "W",
+        "score": "7-3"
+      },
+      {
+        "date": "Apr 8, 2023",
+        "loc": "Neutral",
+        "opponent": "Prairie",
+        "w_l": "L",
+        "score": "12-16",
+        "notes": "Non-league \u00b7 at Central Kitsap HS"
+      },
+      {
+        "date": "Apr 11, 2023",
+        "loc": "Home",
+        "opponent": "Timberline",
+        "w_l": "W",
+        "score": "10-5"
+      },
+      {
+        "date": "Apr 14, 2023",
+        "loc": "Away",
+        "opponent": "Timberline",
+        "w_l": "L",
+        "score": "1-6"
+      },
+      {
+        "date": "Apr 18, 2023",
+        "loc": "Home",
+        "opponent": "Capital",
+        "w_l": "W",
+        "score": "20-3"
+      },
+      {
+        "date": "Apr 22, 2023",
+        "loc": "Neutral",
+        "opponent": "Capital",
+        "w_l": "L",
+        "score": "3-4",
+        "notes": "at Regional Athletic Complex"
+      },
+      {
+        "date": "Apr 25, 2023",
+        "loc": "Away",
+        "opponent": "North Thurston",
+        "w_l": "W",
+        "score": "8-0"
+      },
+      {
+        "date": "Apr 26, 2023",
+        "loc": "Home",
+        "opponent": "North Thurston",
+        "w_l": "L",
+        "score": "6-12"
+      },
+      {
+        "date": "Apr 27, 2023",
+        "loc": "Neutral",
+        "opponent": "Bainbridge",
+        "w_l": "L",
+        "score": "3-4",
+        "notes": "at Cheney Stadium"
+      },
+      {
+        "date": "May 2, 2023",
+        "loc": "Away",
+        "opponent": "Peninsula",
+        "w_l": "W",
+        "score": "11-2"
+      },
+      {
+        "date": "May 3, 2023",
+        "loc": "Home",
+        "opponent": "Peninsula",
+        "w_l": "L",
+        "score": "0-1"
+      },
+      {
+        "date": "May 4, 2023",
+        "loc": "Away",
+        "opponent": "Rogers",
+        "w_l": "L",
+        "score": "5-15"
+      },
+      {
+        "date": "May 5, 2023",
+        "loc": "Home",
+        "opponent": "South Kitsap",
+        "w_l": "L",
+        "score": "7-13"
+      },
+      {
+        "date": "May 9, 2023",
+        "loc": "Away",
+        "opponent": "Prairie",
+        "w_l": "W",
+        "score": "12-4",
+        "notes": "District Tournament \u2014 1st Round"
+      },
+      {
+        "date": "May 13, 2023",
+        "loc": "Neutral",
+        "opponent": "Timberline",
+        "w_l": "L",
+        "score": "7-8",
+        "notes": "District Tournament"
+      },
+      {
+        "date": "May 13, 2023",
+        "loc": "Neutral",
+        "opponent": "Silas",
+        "w_l": "L",
+        "score": "3-4",
+        "notes": "District Tournament"
+      },
+      {
+        "date": "May 16, 2023",
+        "loc": "Neutral",
+        "opponent": "Stadium",
+        "w_l": "L",
+        "score": "4-7",
+        "notes": "State Tournament \u2014 1st Round"
+      }
     ]
   },
   "2024": {
     "league": "3A SSC",
-    "record": {"W": 14, "L": 11},
+    "record": {
+      "W": 14,
+      "L": 11
+    },
     "rosterGrades": {
       "Cole Flowers": 12,
       "Cooper McCutcheon": 12,
@@ -117,41 +586,206 @@
       "Zach Smith": 9
     },
     "schedule": [
-      {"date": "Mar 13, 2024", "loc": "Away",    "opponent": "Curtis", "w_l": "L", "score": "6-10"},
-      {"date": "Mar 16, 2024", "loc": "Neutral", "opponent": "Richland", "w_l": "L", "score": "0-1", "notes": "Tri-City Tournament"},
-      {"date": "Mar 16, 2024", "loc": "Neutral", "opponent": "Mercer Island", "w_l": "W", "score": "4-0", "notes": "Tri-City Tournament"},
-      {"date": "Mar 19, 2024", "loc": "Home",    "opponent": "Yelm", "w_l": "W", "score": "14-4"},
-      {"date": "Mar 20, 2024", "loc": "Away",    "opponent": "Yelm", "w_l": "L", "score": "5-6"},
-      {"date": "Mar 23, 2024", "loc": "Away",    "opponent": "Monroe", "w_l": "L", "score": "2-3"},
-      {"date": "Mar 26, 2024", "loc": "Away",    "opponent": "River Ridge", "w_l": "W", "score": "8-1"},
-      {"date": "Mar 27, 2024", "loc": "Home",    "opponent": "River Ridge", "w_l": "W", "score": "10-0"},
-      {"date": "Mar 29, 2024", "loc": "Away",    "opponent": "Silas", "w_l": "W", "score": "10-2"},
-      {"date": "Apr 1, 2024",  "loc": "Away",    "opponent": "Central Kitsap", "w_l": "W", "score": "3-0"},
-      {"date": "Apr 2, 2024",  "loc": "Home",    "opponent": "Central Kitsap", "w_l": "W", "score": "8-5"},
-      {"date": "Apr 6, 2024",  "loc": "Home",    "opponent": "South Kitsap", "w_l": "W", "score": "7-4"},
-      {"date": "Apr 9, 2024",  "loc": "Home",    "opponent": "Timberline", "w_l": "W", "score": "3-0"},
-      {"date": "Apr 10, 2024", "loc": "Away",    "opponent": "Timberline", "w_l": "L", "score": "2-3"},
-      {"date": "Apr 15, 2024", "loc": "Away",    "opponent": "Capital", "w_l": "L", "score": "0-2"},
-      {"date": "Apr 16, 2024", "loc": "Home",    "opponent": "Capital", "w_l": "L", "score": "1-4"},
-      {"date": "Apr 23, 2024", "loc": "Home",    "opponent": "North Thurston", "w_l": "L", "score": "3-9"},
-      {"date": "Apr 24, 2024", "loc": "Away",    "opponent": "North Thurston", "w_l": "W", "score": "8-6"},
-      {"date": "Apr 30, 2024", "loc": "Home",    "opponent": "Peninsula", "w_l": "L", "score": "0-4"},
-      {"date": "May 1, 2024",  "loc": "Away",    "opponent": "Peninsula", "w_l": "W", "score": "5-3"},
-      {"date": "May 3, 2024",  "loc": "Home",    "opponent": "Peninsula", "w_l": "W", "score": "6-2"},
-      {"date": "May 7, 2024",  "loc": "Neutral", "opponent": "Kelso", "w_l": "L", "score": "1-6", "notes": "District Tournament — 1st Round"},
-      {"date": "May 8, 2024",  "loc": "Home",    "opponent": "North Thurston", "w_l": "W", "score": "5-3", "notes": "District Tournament"},
-      {"date": "May 11, 2024", "loc": "Neutral", "opponent": "Capital", "w_l": "W", "score": "3-0", "notes": "District Tournament"},
-      {"date": "May 14, 2024", "loc": "Neutral", "opponent": "Mercer Island", "w_l": "L", "score": "1-13", "notes": "State Tournament — 1st Round"}
+      {
+        "date": "Mar 13, 2024",
+        "loc": "Away",
+        "opponent": "Curtis",
+        "w_l": "L",
+        "score": "6-10"
+      },
+      {
+        "date": "Mar 16, 2024",
+        "loc": "Neutral",
+        "opponent": "Richland",
+        "w_l": "L",
+        "score": "0-1",
+        "notes": "Tri-City Tournament"
+      },
+      {
+        "date": "Mar 16, 2024",
+        "loc": "Neutral",
+        "opponent": "Mercer Island",
+        "w_l": "W",
+        "score": "4-0",
+        "notes": "Tri-City Tournament"
+      },
+      {
+        "date": "Mar 19, 2024",
+        "loc": "Home",
+        "opponent": "Yelm",
+        "w_l": "W",
+        "score": "14-4"
+      },
+      {
+        "date": "Mar 20, 2024",
+        "loc": "Away",
+        "opponent": "Yelm",
+        "w_l": "L",
+        "score": "5-6"
+      },
+      {
+        "date": "Mar 23, 2024",
+        "loc": "Away",
+        "opponent": "Monroe",
+        "w_l": "L",
+        "score": "2-3"
+      },
+      {
+        "date": "Mar 26, 2024",
+        "loc": "Away",
+        "opponent": "River Ridge",
+        "w_l": "W",
+        "score": "8-1"
+      },
+      {
+        "date": "Mar 27, 2024",
+        "loc": "Home",
+        "opponent": "River Ridge",
+        "w_l": "W",
+        "score": "10-0"
+      },
+      {
+        "date": "Mar 29, 2024",
+        "loc": "Away",
+        "opponent": "Silas",
+        "w_l": "W",
+        "score": "10-2"
+      },
+      {
+        "date": "Apr 1, 2024",
+        "loc": "Away",
+        "opponent": "Central Kitsap",
+        "w_l": "W",
+        "score": "3-0"
+      },
+      {
+        "date": "Apr 2, 2024",
+        "loc": "Home",
+        "opponent": "Central Kitsap",
+        "w_l": "W",
+        "score": "8-5"
+      },
+      {
+        "date": "Apr 6, 2024",
+        "loc": "Home",
+        "opponent": "South Kitsap",
+        "w_l": "W",
+        "score": "7-4"
+      },
+      {
+        "date": "Apr 9, 2024",
+        "loc": "Home",
+        "opponent": "Timberline",
+        "w_l": "W",
+        "score": "3-0"
+      },
+      {
+        "date": "Apr 10, 2024",
+        "loc": "Away",
+        "opponent": "Timberline",
+        "w_l": "L",
+        "score": "2-3"
+      },
+      {
+        "date": "Apr 15, 2024",
+        "loc": "Away",
+        "opponent": "Capital",
+        "w_l": "L",
+        "score": "0-2"
+      },
+      {
+        "date": "Apr 16, 2024",
+        "loc": "Home",
+        "opponent": "Capital",
+        "w_l": "L",
+        "score": "1-4"
+      },
+      {
+        "date": "Apr 23, 2024",
+        "loc": "Home",
+        "opponent": "North Thurston",
+        "w_l": "L",
+        "score": "3-9"
+      },
+      {
+        "date": "Apr 24, 2024",
+        "loc": "Away",
+        "opponent": "North Thurston",
+        "w_l": "W",
+        "score": "8-6"
+      },
+      {
+        "date": "Apr 30, 2024",
+        "loc": "Home",
+        "opponent": "Peninsula",
+        "w_l": "L",
+        "score": "0-4"
+      },
+      {
+        "date": "May 1, 2024",
+        "loc": "Away",
+        "opponent": "Peninsula",
+        "w_l": "W",
+        "score": "5-3"
+      },
+      {
+        "date": "May 3, 2024",
+        "loc": "Home",
+        "opponent": "Peninsula",
+        "w_l": "W",
+        "score": "6-2"
+      },
+      {
+        "date": "May 7, 2024",
+        "loc": "Neutral",
+        "opponent": "Kelso",
+        "w_l": "L",
+        "score": "1-6",
+        "notes": "District Tournament \u2014 1st Round"
+      },
+      {
+        "date": "May 8, 2024",
+        "loc": "Home",
+        "opponent": "North Thurston",
+        "w_l": "W",
+        "score": "5-3",
+        "notes": "District Tournament"
+      },
+      {
+        "date": "May 11, 2024",
+        "loc": "Neutral",
+        "opponent": "Capital",
+        "w_l": "W",
+        "score": "3-0",
+        "notes": "District Tournament"
+      },
+      {
+        "date": "May 14, 2024",
+        "loc": "Neutral",
+        "opponent": "Mercer Island",
+        "w_l": "L",
+        "score": "1-13",
+        "notes": "State Tournament \u2014 1st Round"
+      }
     ]
   },
   "2025": {
-    "league": "Puget Sound League · Narrows Division",
+    "league": "Puget Sound League \u00b7 Narrows Division",
     "leagueChamp": true,
     "statePlace": 3,
-    "record": {"W": 25, "L": 3},
+    "record": {
+      "W": 25,
+      "L": 3
+    },
     "highlights": [
-      {"highlight": "Longest Winning Streak", "value": 16},
-      {"highlight": "Longest Losing Streak", "value": 1}
+      {
+        "highlight": "Longest Winning Streak",
+        "value": 16
+      },
+      {
+        "highlight": "Longest Losing Streak",
+        "value": 1
+      }
     ],
     "rosterGrades": {
       "Cole Krilich": 12,
@@ -175,41 +809,224 @@
       "Sawyer Payne": 9
     },
     "schedule": [
-      {"date": "Mar 12, 2025", "loc": "Away", "opponent": "Rogers", "w_l": "W", "score": "4-3"},
-      {"date": "Mar 19, 2025", "loc": "Home", "opponent": "River Ridge", "w_l": "W", "score": "13-2"},
-      {"date": "Mar 21, 2025", "loc": "Home", "opponent": "North Thurston", "w_l": "W", "score": "12-0"},
-      {"date": "Mar 22, 2025", "loc": "Home", "opponent": "West Seattle", "w_l": "W", "score": "2-0"},
-      {"date": "Mar 25, 2025", "loc": "Home", "opponent": "Bellarmine Prep", "w_l": "W", "score": "5-3"},
-      {"date": "Mar 29, 2025", "loc": "Home", "opponent": "Prairie", "w_l": "W", "score": "7-1"},
-      {"date": "Apr 1, 2025",  "loc": "Away", "opponent": "Silas", "w_l": "W", "score": "4-0"},
-      {"date": "Apr 2, 2025",  "loc": "Home", "opponent": "Silas", "w_l": "W", "score": "3-0"},
-      {"date": "Apr 8, 2025",  "loc": "Home", "opponent": "Lincoln", "w_l": "W", "score": "10-1"},
-      {"date": "Apr 8, 2025",  "loc": "Away", "opponent": "Lincoln", "w_l": "W", "score": "15-0"},
-      {"date": "Apr 11, 2025", "loc": "Away", "opponent": "Bellarmine Prep", "w_l": "W", "score": "4-1"},
-      {"date": "Apr 14, 2025", "loc": "Home", "opponent": "Mount Tahoma", "w_l": "W", "score": "11-1"},
-      {"date": "Apr 15, 2025", "loc": "Away", "opponent": "Mount Tahoma", "w_l": "W", "score": "11-0"},
-      {"date": "Apr 16, 2025", "loc": "Away", "opponent": "Lakes", "w_l": "W", "score": "16-1"},
-      {"date": "Apr 19, 2025", "loc": "Away", "opponent": "Port Angeles", "w_l": "W", "score": "8-1"},
-      {"date": "Apr 22, 2025", "loc": "Away", "opponent": "Central Kitsap", "w_l": "W", "score": "1-0"},
-      {"date": "Apr 23, 2025", "loc": "Home", "opponent": "Central Kitsap", "w_l": "L", "score": "0-2"},
-      {"date": "Apr 25, 2025", "loc": "Away", "opponent": "Peninsula", "w_l": "W", "score": "5-0"},
-      {"date": "Apr 29, 2025", "loc": "Away", "opponent": "Capital", "w_l": "W", "score": "7-0"},
-      {"date": "Apr 30, 2025", "loc": "Home", "opponent": "Timberline", "w_l": "W", "score": "7-1"},
-      {"date": "May 3, 2025",  "loc": "Neutral", "opponent": "Fife", "w_l": "W", "score": "7-2"},
-      {"date": "May 5, 2025",  "loc": "Neutral", "opponent": "Capital", "w_l": "W", "score": "7-5", "notes": "SSC Championship · at Lincoln HS"},
-      {"date": "May 13, 2025", "loc": "Home", "opponent": "Kelso", "w_l": "W", "score": "1-0", "notes": "District Tournament — 1st Round"},
-      {"date": "May 17, 2025", "loc": "Neutral", "opponent": "Capital", "w_l": "W", "score": "3-2", "notes": "District Tournament"},
-      {"date": "May 17, 2025", "loc": "Neutral", "opponent": "Peninsula", "w_l": "L", "score": "2-4", "notes": "District Tournament"},
-      {"date": "May 24, 2025", "loc": "Neutral", "opponent": "West Seattle", "w_l": "W", "score": "3-2", "notes": "State Tournament — 1st Round"},
-      {"date": "May 24, 2025", "loc": "Neutral", "opponent": "Inglemoor", "w_l": "W", "score": "6-2", "notes": "State Tournament"},
-      {"date": "May 30, 2025", "loc": "Neutral", "opponent": "Kennewick", "w_l": "L", "score": "5-12", "notes": "State Tournament"}
+      {
+        "date": "Mar 12, 2025",
+        "loc": "Away",
+        "opponent": "Rogers",
+        "w_l": "W",
+        "score": "4-3"
+      },
+      {
+        "date": "Mar 19, 2025",
+        "loc": "Home",
+        "opponent": "River Ridge",
+        "w_l": "W",
+        "score": "13-2"
+      },
+      {
+        "date": "Mar 21, 2025",
+        "loc": "Home",
+        "opponent": "North Thurston",
+        "w_l": "W",
+        "score": "12-0"
+      },
+      {
+        "date": "Mar 22, 2025",
+        "loc": "Home",
+        "opponent": "West Seattle",
+        "w_l": "W",
+        "score": "2-0"
+      },
+      {
+        "date": "Mar 25, 2025",
+        "loc": "Home",
+        "opponent": "Bellarmine Prep",
+        "w_l": "W",
+        "score": "5-3"
+      },
+      {
+        "date": "Mar 29, 2025",
+        "loc": "Home",
+        "opponent": "Prairie",
+        "w_l": "W",
+        "score": "7-1"
+      },
+      {
+        "date": "Apr 1, 2025",
+        "loc": "Away",
+        "opponent": "Silas",
+        "w_l": "W",
+        "score": "4-0"
+      },
+      {
+        "date": "Apr 2, 2025",
+        "loc": "Home",
+        "opponent": "Silas",
+        "w_l": "W",
+        "score": "3-0"
+      },
+      {
+        "date": "Apr 8, 2025",
+        "loc": "Home",
+        "opponent": "Lincoln",
+        "w_l": "W",
+        "score": "10-1"
+      },
+      {
+        "date": "Apr 8, 2025",
+        "loc": "Away",
+        "opponent": "Lincoln",
+        "w_l": "W",
+        "score": "15-0"
+      },
+      {
+        "date": "Apr 11, 2025",
+        "loc": "Away",
+        "opponent": "Bellarmine Prep",
+        "w_l": "W",
+        "score": "4-1"
+      },
+      {
+        "date": "Apr 14, 2025",
+        "loc": "Home",
+        "opponent": "Mount Tahoma",
+        "w_l": "W",
+        "score": "11-1"
+      },
+      {
+        "date": "Apr 15, 2025",
+        "loc": "Away",
+        "opponent": "Mount Tahoma",
+        "w_l": "W",
+        "score": "11-0"
+      },
+      {
+        "date": "Apr 16, 2025",
+        "loc": "Away",
+        "opponent": "Lakes",
+        "w_l": "W",
+        "score": "16-1"
+      },
+      {
+        "date": "Apr 19, 2025",
+        "loc": "Away",
+        "opponent": "Port Angeles",
+        "w_l": "W",
+        "score": "8-1"
+      },
+      {
+        "date": "Apr 22, 2025",
+        "loc": "Away",
+        "opponent": "Central Kitsap",
+        "w_l": "W",
+        "score": "1-0"
+      },
+      {
+        "date": "Apr 23, 2025",
+        "loc": "Home",
+        "opponent": "Central Kitsap",
+        "w_l": "L",
+        "score": "0-2"
+      },
+      {
+        "date": "Apr 25, 2025",
+        "loc": "Away",
+        "opponent": "Peninsula",
+        "w_l": "W",
+        "score": "5-0"
+      },
+      {
+        "date": "Apr 29, 2025",
+        "loc": "Away",
+        "opponent": "Capital",
+        "w_l": "W",
+        "score": "7-0"
+      },
+      {
+        "date": "Apr 30, 2025",
+        "loc": "Home",
+        "opponent": "Timberline",
+        "w_l": "W",
+        "score": "7-1"
+      },
+      {
+        "date": "May 3, 2025",
+        "loc": "Neutral",
+        "opponent": "Fife",
+        "w_l": "W",
+        "score": "7-2"
+      },
+      {
+        "date": "May 5, 2025",
+        "loc": "Neutral",
+        "opponent": "Capital",
+        "w_l": "W",
+        "score": "7-5",
+        "notes": "SSC Championship \u00b7 at Lincoln HS"
+      },
+      {
+        "date": "May 13, 2025",
+        "loc": "Home",
+        "opponent": "Kelso",
+        "w_l": "W",
+        "score": "1-0",
+        "notes": "District Tournament \u2014 1st Round"
+      },
+      {
+        "date": "May 17, 2025",
+        "loc": "Neutral",
+        "opponent": "Capital",
+        "w_l": "W",
+        "score": "3-2",
+        "notes": "District Tournament"
+      },
+      {
+        "date": "May 17, 2025",
+        "loc": "Neutral",
+        "opponent": "Peninsula",
+        "w_l": "L",
+        "score": "2-4",
+        "notes": "District Tournament"
+      },
+      {
+        "date": "May 24, 2025",
+        "loc": "Neutral",
+        "opponent": "West Seattle",
+        "w_l": "W",
+        "score": "3-2",
+        "notes": "State Tournament \u2014 1st Round"
+      },
+      {
+        "date": "May 24, 2025",
+        "loc": "Neutral",
+        "opponent": "Inglemoor",
+        "w_l": "W",
+        "score": "6-2",
+        "notes": "State Tournament"
+      },
+      {
+        "date": "May 30, 2025",
+        "loc": "Neutral",
+        "opponent": "Kennewick",
+        "w_l": "L",
+        "score": "5-12",
+        "notes": "State Tournament"
+      }
     ]
   },
   "2026": {
-    "league": "Puget Sound League · Narrows Division",
+    "league": "Puget Sound League \u00b7 Narrows Division",
     "highlights": [
-      {"highlight": "Most Runs (Game)", "value": 27, "context": "vs. Mt. Tahoma (27-1)"},
-      {"highlight": "Widest Margin of Victory", "value": 26, "context": "vs. Mt. Tahoma (27-1)"}
+      {
+        "highlight": "Most Runs (Game)",
+        "value": 27,
+        "context": "vs. Mt. Tahoma (27-1)"
+      },
+      {
+        "highlight": "Widest Margin of Victory",
+        "value": 26,
+        "context": "vs. Mt. Tahoma (27-1)"
+      }
     ],
     "rosterGrades": {
       "Hunter Payne": 12,
